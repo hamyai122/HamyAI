@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="https://picsum.photos/32/32" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>hamyAI - KI Chatbots für Unternehmen</title>
+    <title>HamyAI - KI Chatbots für Unternehmen</title>
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -135,6 +135,13 @@
       const UserPlus = (props) => <Icon {...props}><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><line x1="19" x2="19" y1="8" y2="14"/><line x1="22" x2="16" y1="11" y2="11"/></Icon>;
       const LineChart = (props) => <Icon {...props}><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></Icon>;
       const Star = (props) => <Icon {...props}><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></Icon>;
+      const ChevronDown = (props) => <Icon {...props}><path d="m6 9 6 6 6-6"/></Icon>;
+      const Stethoscope = (props) => <Icon {...props}><path d="M4.8 2.3A.3.3 0 0 0 5 2.5h14a.3.3 0 0 0 .2-.2l.8-2a.3.3 0 0 0-.2-.4H4.2a.3.3 0 0 0-.2.4l.8 2Z"/><path d="M8 5v9a4 4 0 0 0 8 0V5"/><path d="M12 14v7"/><circle cx="12" cy="22" r="2"/></Icon>;
+      const Utensils = (props) => <Icon {...props}><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2v0a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7"/></Icon>;
+      const Car = (props) => <Icon {...props}><path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2"/><circle cx="7" cy="17" r="2"/><path d="M9 17h6"/><circle cx="17" cy="17" r="2"/></Icon>;
+      const Pill = (props) => <Icon {...props}><path d="m10.5 20.5 10-10a4.95 4.95 0 1 0-7-7l-10 10a4.95 4.95 0 1 0 7 7Z"/><path d="m8.5 8.5 7 7"/></Icon>;
+      const Settings = (props) => <Icon {...props}><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.1a2 2 0 0 1-1-1.74v-.47a2 2 0 0 1 1-1.74l.15-.1a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/></Icon>;
+
 
       // --- CONTEXT ---
       const ModalContext = createContext();
@@ -240,20 +247,47 @@
         useEffect(() => { const handleScroll = () => setScrolled(window.scrollY > 20); window.addEventListener('scroll', handleScroll); return () => window.removeEventListener('scroll', handleScroll); }, []);
         const handlePageClick = (page) => { setIsOpen(false); onNavigate(page); };
         const handleAnchorLink = (e, anchor) => { e.preventDefault(); setIsOpen(false); onNavigate('home', anchor); };
-        const linkStyles = "text-sm font-medium text-slate-600 hover:text-brand-600 transition-colors cursor-pointer";
+        const linkStyles = "text-sm font-medium text-slate-600 hover:text-brand-600 transition-colors cursor-pointer flex items-center";
         return (
           <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${scrolled ? 'bg-white/90 backdrop-blur-md shadow-sm py-4' : 'bg-transparent py-6'}`}>
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="flex justify-between items-center">
                 <div className="flex items-center space-x-2 cursor-pointer" onClick={() => onNavigate('home')}>
                   <div className="bg-brand-600 p-1.5 rounded-lg hover:rotate-12 transition-transform"><Bot className="h-6 w-6 text-white" /></div>
-                  <span className="text-2xl font-display font-bold text-slate-900 tracking-tight">hamyAI</span>
+                  <span className="text-2xl font-display font-bold text-slate-900 tracking-tight">HamyAI</span>
                 </div>
                 <div className="hidden lg:flex items-center space-x-8">
                   <button onClick={() => handlePageClick('home')} className={linkStyles}>Startseite</button>
+                  
+                   {/* Dropdown Menu */}
+                  <div className="relative group">
+                    <button className={linkStyles}>
+                      Für wen? <ChevronDown className="w-4 h-4 ml-1 transition-transform group-hover:rotate-180" />
+                    </button>
+                    <div className="absolute top-full left-1/2 -translate-x-1/2 pt-4 hidden group-hover:block w-56">
+                       <div className="bg-white rounded-xl shadow-xl border border-slate-100 overflow-hidden p-2">
+                          <button onClick={() => handlePageClick('medical')} className="flex items-center gap-3 w-full text-left px-3 py-2 rounded-lg hover:bg-brand-50 text-slate-600 hover:text-brand-700 transition-colors">
+                             <div className="bg-emerald-100 p-1.5 rounded-md"><Stethoscope className="w-4 h-4 text-emerald-600"/></div>
+                             <span className="text-sm font-medium">Arztpraxen</span>
+                          </button>
+                          <button onClick={() => handlePageClick('restaurant')} className="flex items-center gap-3 w-full text-left px-3 py-2 rounded-lg hover:bg-brand-50 text-slate-600 hover:text-brand-700 transition-colors">
+                             <div className="bg-orange-100 p-1.5 rounded-md"><Utensils className="w-4 h-4 text-orange-600"/></div>
+                             <span className="text-sm font-medium">Restaurants</span>
+                          </button>
+                          <button onClick={() => handlePageClick('pharmacy')} className="flex items-center gap-3 w-full text-left px-3 py-2 rounded-lg hover:bg-brand-50 text-slate-600 hover:text-brand-700 transition-colors">
+                             <div className="bg-teal-100 p-1.5 rounded-md"><Pill className="w-4 h-4 text-teal-600"/></div>
+                             <span className="text-sm font-medium">Apotheken</span>
+                          </button>
+                          <button onClick={() => handlePageClick('car-dealership')} className="flex items-center gap-3 w-full text-left px-3 py-2 rounded-lg hover:bg-brand-50 text-slate-600 hover:text-brand-700 transition-colors">
+                             <div className="bg-indigo-100 p-1.5 rounded-md"><Car className="w-4 h-4 text-indigo-600"/></div>
+                             <span className="text-sm font-medium">Autohäuser</span>
+                          </button>
+                       </div>
+                    </div>
+                  </div>
+
                   <a href="#feedback" onClick={(e) => handleAnchorLink(e, 'feedback')} className={linkStyles}>Feedback</a>
                   <a href="#benefits" onClick={(e) => handleAnchorLink(e, 'benefits')} className={linkStyles}>Vorteile</a>
-                  <a href="#pricing" onClick={(e) => handleAnchorLink(e, 'pricing')} className={linkStyles}>Preise</a>
                   <button onClick={() => handlePageClick('about')} className={linkStyles}>Über uns</button>
                   <button onClick={() => handlePageClick('privacy')} className={linkStyles}>Datenschutz</button>
                 </div>
@@ -265,9 +299,25 @@
               <div className="lg:hidden absolute top-full left-0 w-full bg-white border-b border-slate-100 shadow-xl animate-in slide-in-from-top-2">
                 <div className="px-4 pt-2 pb-6 space-y-1">
                   <button className="block w-full text-left px-4 py-3 rounded-xl text-base font-medium text-slate-700 hover:bg-brand-50" onClick={() => handlePageClick('home')}>Startseite</button>
+                  
+                  <div className="px-4 py-2">
+                     <p className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Für wen?</p>
+                     <button className="flex items-center gap-3 w-full text-left py-2 text-base font-medium text-slate-700 hover:text-brand-600" onClick={() => handlePageClick('medical')}>
+                        <Stethoscope className="w-5 h-5"/> Arztpraxen
+                     </button>
+                     <button className="flex items-center gap-3 w-full text-left py-2 text-base font-medium text-slate-700 hover:text-brand-600" onClick={() => handlePageClick('restaurant')}>
+                        <Utensils className="w-5 h-5"/> Restaurants
+                     </button>
+                     <button className="flex items-center gap-3 w-full text-left py-2 text-base font-medium text-slate-700 hover:text-brand-600" onClick={() => handlePageClick('pharmacy')}>
+                        <Pill className="w-5 h-5"/> Apotheken
+                     </button>
+                     <button className="flex items-center gap-3 w-full text-left py-2 text-base font-medium text-slate-700 hover:text-brand-600" onClick={() => handlePageClick('car-dealership')}>
+                        <Car className="w-5 h-5"/> Autohäuser
+                     </button>
+                  </div>
+
                   <button className="block w-full text-left px-4 py-3 rounded-xl text-base font-medium text-slate-700 hover:bg-brand-50" onClick={(e) => handleAnchorLink(e, 'feedback')}>Feedback</button>
                   <button className="block w-full text-left px-4 py-3 rounded-xl text-base font-medium text-slate-700 hover:bg-brand-50" onClick={(e) => handleAnchorLink(e, 'benefits')}>Vorteile</button>
-                  <button className="block w-full text-left px-4 py-3 rounded-xl text-base font-medium text-slate-700 hover:bg-brand-50" onClick={(e) => handleAnchorLink(e, 'pricing')}>Preise</button>
                   <button className="block w-full text-left px-4 py-3 rounded-xl text-base font-medium text-slate-700 hover:bg-brand-50" onClick={() => handlePageClick('about')}>Über uns</button>
                   <button className="block w-full text-left px-4 py-3 rounded-xl text-base font-medium text-slate-700 hover:bg-brand-50" onClick={() => handlePageClick('privacy')}>Datenschutz</button>
                   <div className="pt-4 px-4"><Button className="w-full" onClick={() => { setIsOpen(false); openModal(); }}>Demo buchen</Button></div>
@@ -310,7 +360,7 @@
                 <div className="mb-12 lg:mb-0 text-center lg:text-left">
                   <div className="inline-flex items-center px-3 py-1 rounded-full bg-brand-50 text-brand-700 text-sm font-medium mb-6 animate-fade-in-up"><span className="w-2 h-2 rounded-full bg-brand-500 mr-2"></span> Teams entlasten</div>
                   <h1 className="text-5xl lg:text-7xl font-display font-extrabold text-slate-900 leading-tight mb-6 tracking-tight">KI Chatbots <br /> für ihr <span className="text-slate-900">Unternehmen</span></h1>
-                  <p className="text-lg text-slate-600 mb-8 max-w-xl mx-auto lg:mx-0">Wir bieten KI-Chatbots an - ganz nach deinen Bedürfnissen. Wir erstellen KI Chatbots via Superchat. Skalierbar, sicher und in wenigen Minuten einsatzbereit.</p>
+                  <p className="text-lg text-slate-600 mb-8 max-w-xl mx-auto lg:mx-0">Wir bieten KI-Chatbots an - ganz nach deinen Bedürfnissen via Superchat. Skalierbar, sicher und in wenigen Minuten einsatzbereit.</p>
                   <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-12"><Button size="lg" icon onClick={openModal}>Demotermin buchen</Button></div>
                 </div>
                 <div className="relative mx-auto w-full max-w-lg lg:max-w-full perspective-1000">
@@ -357,6 +407,7 @@
                 <p className="text-xl md:text-2xl font-display font-bold text-slate-900 leading-tight">
                   Über 9.000 Unternehmen <br className="hidden md:block"/> vertrauen Superchat schon
                 </p>
+                <p className="text-slate-500 mt-2">Darunter zählen McDonald's, TUI und Edeka!</p>
               </div>
               
               <div className="relative flex-grow w-full overflow-hidden mask-gradient">
@@ -503,12 +554,12 @@
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-10 mb-16">
                 <div className="col-span-2 lg:col-span-3">
-                  <div className="flex items-center space-x-2 mb-6 cursor-pointer group" onClick={() => onNavigate('home')}><div className="bg-brand-600 p-1.5 rounded-lg group-hover:rotate-12 transition-transform duration-300"><Bot className="h-6 w-6 text-white" /></div><span className="text-2xl font-display font-bold text-white tracking-tight">hamyAI</span></div>
+                  <div className="flex items-center space-x-2 mb-6 cursor-pointer group" onClick={() => onNavigate('home')}><div className="bg-brand-600 p-1.5 rounded-lg group-hover:rotate-12 transition-transform duration-300"><Bot className="h-6 w-6 text-white" /></div><span className="text-2xl font-display font-bold text-white tracking-tight">HamyAI</span></div>
                   <p className="text-sm text-slate-400 mb-6 max-w-xs leading-relaxed">Revolutionierung der Kundeninteraktion mit sicheren, in Deutschland entwickelten KI-Lösungen.</p>
                 </div>
                 <div className="col-span-2 lg:col-span-2"><h4 className="font-bold text-white mb-6">Unternehmen</h4><ul className="space-y-4 text-sm"><li><a href="#" onClick={(e) => handleLinkClick(e, 'about')} className="hover:text-brand-400 transition-colors">Über uns</a></li><li><a href="#" onClick={(e) => handleLinkClick(e, 'contact')} className="hover:text-brand-400 transition-colors">Kontakt</a></li><li><a href="#" onClick={(e) => handleLinkClick(e, 'privacy')} className="hover:text-brand-400 transition-colors">Datenschutz</a></li><li><a href="#" onClick={(e) => handleLinkClick(e, 'imprint')} className="hover:text-brand-400 transition-colors">Impressum</a></li></ul></div>
               </div>
-              <div className="pt-8 border-t border-slate-800 flex flex-col md:flex-row justify-between items-center text-xs text-slate-500"><p className="mb-4 md:mb-0">© 2026 hamyAI. Alle Rechte vorbehalten.</p><div className="flex space-x-6"><a href="#" onClick={(e) => handleLinkClick(e, 'imprint')} className="hover:text-white transition-colors">Impressum</a><a href="#" onClick={(e) => handleLinkClick(e, 'privacy')} className="hover:text-white transition-colors">Datenschutz</a><a href="#" onClick={(e) => handleLinkClick(e, 'home')} className="hover:text-white transition-colors">AGB</a></div></div>
+              <div className="pt-8 border-t border-slate-800 flex flex-col md:flex-row justify-between items-center text-xs text-slate-500"><p className="mb-4 md:mb-0">© 2026 HamyAI. Alle Rechte vorbehalten.</p><div className="flex space-x-6"><a href="#" onClick={(e) => handleLinkClick(e, 'imprint')} className="hover:text-white transition-colors">Impressum</a><a href="#" onClick={(e) => handleLinkClick(e, 'privacy')} className="hover:text-white transition-colors">Datenschutz</a><a href="#" onClick={(e) => handleLinkClick(e, 'home')} className="hover:text-white transition-colors">AGB</a></div></div>
             </div>
           </footer>
         );
@@ -518,10 +569,40 @@
         <div className="pt-32 pb-24">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16 animate-in fade-in slide-in-from-bottom-4 duration-700"><h1 className="text-4xl md:text-6xl font-display font-bold text-slate-900 mb-6">Über uns</h1><p className="text-xl text-slate-600 max-w-3xl mx-auto">Wir sind HamyAI, eine KI Agentur die Chatbots via Superchat für andere Unternehmen einrichtet.</p></div>
+            
             <div className="grid md:grid-cols-2 gap-16 items-center mb-24">
               <div className="animate-in fade-in slide-in-from-left-4 duration-700"><h2 className="text-3xl font-display font-bold text-slate-900 mb-6">Unsere Mission</h2><p className="text-lg text-slate-600 leading-relaxed mb-4">Bei hamyAI glauben wir, dass Technologie den Menschen nicht ersetzen, sondern ihn befreien sollte. Unsere Mission ist es, Unternehmen dabei zu unterstützen, repetitive Aufgaben durch intelligente KI-Chatbots zu automatisieren.</p><p className="text-lg text-slate-600 leading-relaxed">Dadurch gewinnen Ihre Mitarbeiter Zeit für das, was wirklich zählt: komplexe Problemlösungen und persönliche Kundenbeziehungen.</p></div>
               <div className="bg-slate-100 rounded-[2rem] aspect-video overflow-hidden shadow-inner"><img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=80" alt="Team working" className="w-full h-full object-cover" /></div>
             </div>
+
+            {/* CEO Section */}
+             <div className="grid md:grid-cols-2 gap-16 items-center mb-24">
+                 <div className="order-2 md:order-1 bg-slate-200 rounded-[2rem] overflow-hidden shadow-inner relative group h-full min-h-[400px]">
+                      {/* Image placeholder */}
+                      <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/50 via-black/20 to-transparent p-8">
+                        <p className="text-white font-display font-bold text-2xl">Hussein Hamy</p>
+                        <p className="text-brand-300 font-medium">CEO & Gründer</p>
+                      </div>
+                 </div>
+                 <div className="order-1 md:order-2 animate-in fade-in slide-in-from-right-4 duration-700">
+                     <div className="inline-flex items-center px-3 py-1 rounded-full bg-brand-50 text-brand-700 text-xs font-bold uppercase tracking-wider mb-6">Der Gründer</div>
+                     <h2 className="text-3xl font-display font-bold text-slate-900 mb-6">Vom Traum zur Vision</h2>
+                     <div className="space-y-4 text-lg text-slate-600 leading-relaxed">
+                        <p>
+                            "Schon als kleiner Junge haben mich die ganz großen Unternehmer bzw Selbstständigen begeistert und habe deswegen das Unternehmen HamyAI gegründet."
+                        </p>
+                        <p>
+                            "Ziel ist es mit der Power von KI jeden Unternehmer, sei es Autohaus, Praxen, Restaurant oder einfach nur fuer deine neue Millionen-Idee, näher zu bringen und so 1 mehr Zeit und mehr Kunden zu gewinnen."
+                        </p>
+                        <div className="bg-brand-50/50 p-6 rounded-2xl border border-brand-100 mt-6">
+                            <p className="font-medium text-slate-800">
+                                "Etwa 70 % bis über 80 % der deutschen Bevölkerung nutzen WhatsApp, was den Messenger zur beliebtesten App dieser Art in Deutschland macht. Warum diesen nicht in euren Unternehmen nutzen?"
+                            </p>
+                        </div>
+                     </div>
+                 </div>
+             </div>
+
             <div className="grid md:grid-cols-3 gap-8">{[{ icon: Target, title: "Innovation", desc: "Wir nutzen modernste LLM-Modelle und RAG-Technologie." }, { icon: Users, title: "Kundennähe", desc: "Ihre Bedürfnisse stehen bei unserer Entwicklung im Mittelpunkt." }, { icon: Shield, title: "Sicherheit", desc: "Datenhosting in Deutschland und volle DSGVO-Konformität." }].map((item, i) => (<div key={i} className="bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-md transition-shadow"><div className="w-12 h-12 bg-brand-50 text-brand-600 rounded-xl flex items-center justify-center mb-6"><item.icon className="w-6 h-6" /></div><h3 className="text-xl font-bold text-slate-900 mb-3">{item.title}</h3><p className="text-slate-600">{item.desc}</p></div>))}</div>
           </div>
         </div>
@@ -616,6 +697,248 @@
         </div>
       );
 
+      // --- NEW LANDING PAGES ---
+      const MedicalPage = () => {
+         const { openModal } = useModal();
+         return (
+            <div className="pt-32 pb-24">
+              <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                {/* Hero */}
+                <div className="text-center mb-16 animate-in fade-in slide-in-from-bottom-4 duration-700">
+                   <div className="inline-flex items-center px-4 py-1.5 rounded-full bg-emerald-50 text-emerald-700 text-sm font-medium mb-6">
+                      <Stethoscope className="w-4 h-4 mr-2" /> KI für das Gesundheitswesen
+                   </div>
+                   <h1 className="text-4xl md:text-6xl font-display font-bold text-slate-900 mb-6">Mehr Zeit für Patienten, <br/>weniger Telefonklingeln.</h1>
+                   
+                   <div className="bg-emerald-50/50 border border-emerald-100 p-6 rounded-2xl max-w-3xl mx-auto mb-8 text-left">
+                      <div className="flex gap-4">
+                        <div className="shrink-0 mt-1"><AlertCircle className="w-5 h-5 text-emerald-600" /></div>
+                        <div className="text-slate-700 space-y-4">
+                            <p>
+                              Deutschland hinkt digital hinterher, doch der Handlungsdruck wächst: Eine Untersuchung von März 2023 belegt, dass schlechte Erreichbarkeit der Hauptgrund für negative Google-Bewertungen ist – obwohl 74 % der Praxen bereit für Innovationen sind.
+                            </p>
+                            <p>
+                              Die Lösung liegt in asynchroner Kommunikation (z. B. WhatsApp). Da das Personal durch Fachkräftemangel und ständiges Telefonklingeln überlastet ist, können einfache Anfragen wesentlich effizienter per Chat geklärt werden. Zudem nutzen bereits über 60 Millionen Menschen in Deutschland WhatsApp.
+                            </p>
+                        </div>
+                      </div>
+                   </div>
+
+                   <p className="text-xl text-slate-600 max-w-3xl mx-auto mb-8">
+                      Entlasten Sie Ihr Praxispersonal durch intelligente KI-Chatbots. Automatisierte Terminvergabe, Rezeptbestellungen und Befundabfragen – 24/7 und DSGVO-konform via WhatsApp.
+                   </p>
+                   <Button size="lg" onClick={openModal}>Kostenlose Praxis-Demo</Button>
+                </div>
+
+                {/* Benefits Grid */}
+                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-24">
+                   <div className="bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-md transition-all">
+                      <div className="w-12 h-12 bg-emerald-50 text-emerald-600 rounded-xl flex items-center justify-center mb-4"><Zap className="w-6 h-6"/></div>
+                      <h3 className="text-xl font-bold text-slate-900 mb-3">Automatische Terminvergabe</h3>
+                      <p className="text-slate-600">Patienten können rund um die Uhr Termine anfragen, verschieben oder absagen, ohne dass das Telefon klingelt.</p>
+                   </div>
+                   <div className="bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-md transition-all">
+                      <div className="w-12 h-12 bg-blue-50 text-blue-600 rounded-xl flex items-center justify-center mb-4"><ShieldCheck className="w-6 h-6"/></div>
+                      <h3 className="text-xl font-bold text-slate-900 mb-3">Rezept & Überweisung</h3>
+                      <p className="text-slate-600">Strukturierte Aufnahme von Rezeptwünschen. Das Team prüft und gibt frei – ohne zeitraubende Rückrufe.</p>
+                   </div>
+                   <div className="bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-md transition-all">
+                      <div className="w-12 h-12 bg-purple-50 text-purple-600 rounded-xl flex items-center justify-center mb-4"><Headset className="w-6 h-6"/></div>
+                      <h3 className="text-xl font-bold text-slate-900 mb-3">Entlastung am Empfang</h3>
+                      <p className="text-slate-600">Reduzieren Sie das Anrufaufkommen um bis zu 60%. Ihre MFAs können sich wieder auf die Patienten vor Ort konzentrieren.</p>
+                   </div>
+                </div>
+
+                {/* Image Section */}
+                <div className="bg-emerald-900 rounded-[2rem] overflow-hidden relative isolate">
+                   <div className="grid lg:grid-cols-2 gap-0">
+                      <div className="p-12 lg:p-20 flex flex-col justify-center">
+                         <h2 className="text-3xl font-display font-bold text-white mb-6">Warum WhatsApp in der Praxis?</h2>
+                         <ul className="space-y-4 text-emerald-100 mb-8">
+                            <li className="flex items-start"><CheckCircle2 className="w-6 h-6 mr-3 shrink-0"/> Nahezu jeder Patient nutzt es bereits.</li>
+                            <li className="flex items-start"><CheckCircle2 className="w-6 h-6 mr-3 shrink-0"/> Ende-zu-Ende Verschlüsselung & DSGVO-konform via Superchat.</li>
+                            <li className="flex items-start"><CheckCircle2 className="w-6 h-6 mr-3 shrink-0"/> Keine Warteschleifen mehr für Ihre Patienten.</li>
+                         </ul>
+                         <div className="pt-4"><Button variant="white" onClick={openModal}>Jetzt beraten lassen</Button></div>
+                      </div>
+                      <div className="bg-emerald-800 h-full min-h-[300px] relative">
+                         <img src="https://images.unsplash.com/photo-1666214280557-f1b5022eb634?auto=format&fit=crop&w=800&q=80" className="absolute inset-0 w-full h-full object-cover opacity-80 mix-blend-overlay" alt="Medical Team" />
+                      </div>
+                   </div>
+                </div>
+              </div>
+            </div>
+         );
+      };
+
+      const RestaurantPage = () => {
+         const { openModal } = useModal();
+         return (
+            <div className="pt-32 pb-24">
+              <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                {/* Hero */}
+                <div className="text-center mb-16 animate-in fade-in slide-in-from-bottom-4 duration-700">
+                   <div className="inline-flex items-center px-4 py-1.5 rounded-full bg-orange-50 text-orange-700 text-sm font-medium mb-6">
+                      <Utensils className="w-4 h-4 mr-2" /> KI für die Gastronomie
+                   </div>
+                   <h1 className="text-4xl md:text-6xl font-display font-bold text-slate-900 mb-6">Volles Haus, <br/>ohne Stress am Telefon.</h1>
+                   <p className="text-xl text-slate-600 max-w-3xl mx-auto mb-8">
+                      Verpassen Sie keine Reservierung mehr. Wir setzen auf die Reservierungsplattform <strong>Resmio</strong>: Unser KI-Assistent nimmt Tischreservierungen, Bestellungen und Event-Anfragen rund um die Uhr entgegen.
+                   </p>
+                   <Button size="lg" onClick={openModal}>Kostenlose Gastro-Demo</Button>
+                </div>
+
+                {/* Benefits Grid */}
+                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-24">
+                   <div className="bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-md transition-all">
+                      <div className="w-12 h-12 bg-orange-50 text-orange-600 rounded-xl flex items-center justify-center mb-4"><Users className="w-6 h-6"/></div>
+                      <h3 className="text-xl font-bold text-slate-900 mb-3">Tischreservierung 24/7</h3>
+                      <p className="text-slate-600">Automatische Annahme von Reservierungen via WhatsApp, Instagram und Webchat mit direkter <strong>Resmio-Integration</strong>.</p>
+                   </div>
+                   <div className="bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-md transition-all">
+                      <div className="w-12 h-12 bg-red-50 text-red-600 rounded-xl flex items-center justify-center mb-4"><Star className="w-6 h-6"/></div>
+                      <h3 className="text-xl font-bold text-slate-900 mb-3">Google Bewertungen</h3>
+                      <p className="text-slate-600">Senden Sie nach dem Besuch automatisiert eine Nachricht und sammeln Sie positive Bewertungen auf Autopilot.</p>
+                   </div>
+                   <div className="bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-md transition-all">
+                      <div className="w-12 h-12 bg-yellow-50 text-yellow-600 rounded-xl flex items-center justify-center mb-4"><Rocket className="w-6 h-6"/></div>
+                      <h3 className="text-xl font-bold text-slate-900 mb-3">Mehr Umsatz durch Events</h3>
+                      <p className="text-slate-600">Bewerben Sie Mittagstische oder spezielle Events direkt über WhatsApp Newsletter an Ihre Stammgäste.</p>
+                   </div>
+                </div>
+
+                {/* Image Section */}
+                <div className="bg-slate-900 rounded-[2rem] overflow-hidden relative isolate">
+                   <div className="grid lg:grid-cols-2 gap-0">
+                      <div className="p-12 lg:p-20 flex flex-col justify-center">
+                         <h2 className="text-3xl font-display font-bold text-white mb-6">Service beginnt vor dem Besuch</h2>
+                         <p className="text-slate-300 mb-8 text-lg">
+                            Während Ihr Team sich um die Gäste im Restaurant kümmert, managt die KI die Anfragen von morgen. Keine verpassten Anrufe mehr zu Stoßzeiten.
+                         </p>
+                         <div className="pt-4"><Button variant="primary" onClick={openModal}>Jetzt Demo vereinbaren</Button></div>
+                      </div>
+                      <div className="bg-slate-800 h-full min-h-[300px] relative">
+                         <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=800&q=80" className="absolute inset-0 w-full h-full object-cover opacity-60" alt="Restaurant Interior" />
+                      </div>
+                   </div>
+                </div>
+              </div>
+            </div>
+         );
+      };
+
+      const PharmacyPage = () => {
+         const { openModal } = useModal();
+         return (
+            <div className="pt-32 pb-24">
+              <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                {/* Hero */}
+                <div className="text-center mb-16 animate-in fade-in slide-in-from-bottom-4 duration-700">
+                   <div className="inline-flex items-center px-4 py-1.5 rounded-full bg-teal-50 text-teal-700 text-sm font-medium mb-6">
+                      <Pill className="w-4 h-4 mr-2" /> KI für Apotheken
+                   </div>
+                   <h1 className="text-4xl md:text-6xl font-display font-bold text-slate-900 mb-6">Rezepte vorbestellen & <br/>Verfügbarkeit prüfen.</h1>
+                   <p className="text-xl text-slate-600 max-w-3xl mx-auto mb-8">
+                      Ihre Kunden können Rezepte einfach per Foto senden, die Verfügbarkeit von Medikamenten prüfen und Abholzeiten vereinbaren – alles automatisch via WhatsApp.
+                   </p>
+                   <Button size="lg" onClick={openModal}>Kostenlose Apotheken-Demo</Button>
+                </div>
+
+                {/* Benefits Grid */}
+                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-24">
+                   <div className="bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-md transition-all">
+                      <div className="w-12 h-12 bg-teal-50 text-teal-600 rounded-xl flex items-center justify-center mb-4"><Pill className="w-6 h-6"/></div>
+                      <h3 className="text-xl font-bold text-slate-900 mb-3">Rezept-Upload</h3>
+                      <p className="text-slate-600">Sichere Übermittlung von Rezeptfotos. Sie bestätigen die Verfügbarkeit und legen die Abholzeit fest.</p>
+                   </div>
+                   <div className="bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-md transition-all">
+                      <div className="w-12 h-12 bg-blue-50 text-blue-600 rounded-xl flex items-center justify-center mb-4"><CheckCircle2 className="w-6 h-6"/></div>
+                      <h3 className="text-xl font-bold text-slate-900 mb-3">Verfügbarkeits-Check</h3>
+                      <p className="text-slate-600">Vermeiden Sie unnötige Wege für Ihre Kunden. Der Bot prüft, ob das Medikament vorrätig ist.</p>
+                   </div>
+                   <div className="bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-md transition-all">
+                      <div className="w-12 h-12 bg-purple-50 text-purple-600 rounded-xl flex items-center justify-center mb-4"><Headset className="w-6 h-6"/></div>
+                      <h3 className="text-xl font-bold text-slate-900 mb-3">Beratungstermine</h3>
+                      <p className="text-slate-600">Koordinieren Sie diskrete Beratungstermine effizient und ohne Telefonstress.</p>
+                   </div>
+                </div>
+
+                {/* Image Section */}
+                <div className="bg-teal-900 rounded-[2rem] overflow-hidden relative isolate">
+                   <div className="grid lg:grid-cols-2 gap-0">
+                      <div className="p-12 lg:p-20 flex flex-col justify-center">
+                         <h2 className="text-3xl font-display font-bold text-white mb-6">Ihre Apotheke in der Hosentasche</h2>
+                         <p className="text-teal-100 mb-8 text-lg">
+                            Seien Sie für Ihre Kunden da, wo sie sich täglich aufhalten. Steigern Sie die Kundenbindung durch modernen, digitalen Service.
+                         </p>
+                         <div className="pt-4"><Button variant="white" onClick={openModal}>Jetzt beraten lassen</Button></div>
+                      </div>
+                      <div className="bg-teal-800 h-full min-h-[300px] relative">
+                         <img src="https://images.unsplash.com/photo-1587854692152-cbe660dbde88?auto=format&fit=crop&w=800&q=80" className="absolute inset-0 w-full h-full object-cover opacity-80 mix-blend-overlay" alt="Pharmacy Interior" />
+                      </div>
+                   </div>
+                </div>
+              </div>
+            </div>
+         );
+      };
+
+      const CarDealershipPage = () => {
+         const { openModal } = useModal();
+         return (
+            <div className="pt-32 pb-24">
+              <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                {/* Hero */}
+                <div className="text-center mb-16 animate-in fade-in slide-in-from-bottom-4 duration-700">
+                   <div className="inline-flex items-center px-4 py-1.5 rounded-full bg-indigo-50 text-indigo-700 text-sm font-medium mb-6">
+                      <Car className="w-4 h-4 mr-2" /> KI für Autohäuser
+                   </div>
+                   <h1 className="text-4xl md:text-6xl font-display font-bold text-slate-900 mb-6">Mehr Probefahrten, <br/>volle Werkstatt.</h1>
+                   <p className="text-xl text-slate-600 max-w-3xl mx-auto mb-8">
+                      Automatisieren Sie Terminbuchungen für Probefahrten und Werkstattservice. Qualifizieren Sie Leads rund um die Uhr.
+                   </p>
+                   <Button size="lg" onClick={openModal}>Kostenlose Autohaus-Demo</Button>
+                </div>
+
+                {/* Benefits Grid */}
+                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-24">
+                   <div className="bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-md transition-all">
+                      <div className="w-12 h-12 bg-indigo-50 text-indigo-600 rounded-xl flex items-center justify-center mb-4"><Car className="w-6 h-6"/></div>
+                      <h3 className="text-xl font-bold text-slate-900 mb-3">Probefahrt-Buchung</h3>
+                      <p className="text-slate-600">Interessenten können 24/7 Probefahrten für ihre Wunschmodelle anfragen und direkt buchen.</p>
+                   </div>
+                   <div className="bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-md transition-all">
+                      <div className="w-12 h-12 bg-blue-50 text-blue-600 rounded-xl flex items-center justify-center mb-4"><Settings className="w-6 h-6"/></div>
+                      <h3 className="text-xl font-bold text-slate-900 mb-3">Werkstatt-Termine</h3>
+                      <p className="text-slate-600">Entlasten Sie Ihr Service-Team. Automatisierte Terminvergabe für Inspektionen, Reifenwechsel und Reparaturen.</p>
+                   </div>
+                   <div className="bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-md transition-all">
+                      <div className="w-12 h-12 bg-green-50 text-green-600 rounded-xl flex items-center justify-center mb-4"><Target className="w-6 h-6"/></div>
+                      <h3 className="text-xl font-bold text-slate-900 mb-3">Lead Qualifizierung</h3>
+                      <p className="text-slate-600">Der Bot erfasst Fahrzeugwünsche und Budget vorab. Ihr Vertriebsteam erhält vorqualifizierte Kontakte.</p>
+                   </div>
+                </div>
+
+                {/* Image Section */}
+                <div className="bg-slate-900 rounded-[2rem] overflow-hidden relative isolate">
+                   <div className="grid lg:grid-cols-2 gap-0">
+                      <div className="p-12 lg:p-20 flex flex-col justify-center">
+                         <h2 className="text-3xl font-display font-bold text-white mb-6">Beschleunigen Sie Ihren Vertrieb</h2>
+                         <p className="text-slate-300 mb-8 text-lg">
+                            Kein Interessent wartet gerne. Bieten Sie sofortige Antworten auf Fahrzeuganfragen, auch am Wochenende.
+                         </p>
+                         <div className="pt-4"><Button variant="primary" onClick={openModal}>Jetzt Demo vereinbaren</Button></div>
+                      </div>
+                      <div className="bg-slate-800 h-full min-h-[300px] relative">
+                         <img src="https://images.unsplash.com/photo-1550355291-bbee04a92027?auto=format&fit=crop&w=800&q=80" className="absolute inset-0 w-full h-full object-cover opacity-60" alt="Car Showroom" />
+                      </div>
+                   </div>
+                </div>
+              </div>
+            </div>
+         );
+      };
+
       // --- MAIN APP ---
       const AppContent = () => {
         const { isModalOpen, closeModal } = useModal();
@@ -652,6 +975,10 @@
             <main className="flex-grow">
               {currentPage === 'home' && <><Hero /><TrustBanner /><FeaturesGrid /><Pricing /><FeedbackSection /></>}
               {currentPage === 'about' && <AboutUs />}
+              {currentPage === 'medical' && <MedicalPage />}
+              {currentPage === 'restaurant' && <RestaurantPage />}
+              {currentPage === 'pharmacy' && <PharmacyPage />}
+              {currentPage === 'car-dealership' && <CarDealershipPage />}
               {currentPage === 'privacy' && <PrivacyPolicy />}
               {currentPage === 'imprint' && <Imprint />}
             </main>
@@ -672,11 +999,10 @@
     </script>
     
 <script
-  src='https://widget.superchat.de/snippet.js?applicationKey=WC0mp4eLnPWE5o1br2oNGvYJRa'
+  src='https://widget.superchat.de/snippet.js?applicationKey=WCl0vXzQKwDEn43lrGy7j8amY4'
   referrerpolicy='no-referrer-when-downgrade'>
   
   </script>
     
-<script type="module" src="/index.tsx"></script>
 </body>
 </html>
