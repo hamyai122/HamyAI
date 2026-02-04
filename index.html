@@ -43,6 +43,8 @@
               'pulse-ring': 'pulse-ring 2.5s cubic-bezier(0.455, 0.03, 0.515, 0.955) infinite',
               'fade-in-up': 'fadeInUp 0.8s ease-out forwards',
               'marquee': 'marquee 40s linear infinite',
+              'barrel-roll': 'barrel-roll 0.6s cubic-bezier(0.34, 1.56, 0.64, 1)',
+              'super-spin': 'super-spin 1.5s cubic-bezier(0.45, 0, 0.55, 1)',
             },
             keyframes: {
               fadeInUp: {
@@ -57,6 +59,16 @@
               marquee: {
                 '0%': { transform: 'translateX(0)' },
                 '100%': { transform: 'translateX(-50%)' },
+              },
+              'barrel-roll': {
+                '0%': { transform: 'rotate(0deg) scale(1)' },
+                '50%': { transform: 'rotate(180deg) scale(1.2)' },
+                '100%': { transform: 'rotate(360deg) scale(1)' },
+              },
+              'super-spin': {
+                '0%': { transform: 'scale(1) rotate(0deg)', filter: 'hue-rotate(0deg)' },
+                '50%': { transform: 'scale(0.3) rotate(180deg)', filter: 'hue-rotate(180deg) blur(2px)' },
+                '100%': { transform: 'scale(1) rotate(360deg)', filter: 'hue-rotate(360deg) blur(0px)' },
               }
             }
           }
@@ -82,6 +94,10 @@
       .animate-float-delayed { animation: float-delayed 7s ease-in-out infinite 1s; }
       .animate-pulse-ring { animation: pulse-ring 2.5s cubic-bezier(0.455, 0.03, 0.515, 0.955) infinite; }
       .mask-gradient { mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent); -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent); }
+      
+      /* Confetti Styles - Fixed Duration */
+      .confetti { position: fixed; width: 10px; height: 10px; background-color: #f00; animation: fall 3s linear forwards; z-index: 9999; }
+      @keyframes fall { to { transform: translateY(100vh) rotate(720deg); } }
     </style>
     <link rel="stylesheet" href="/index.css">
 </head>
@@ -227,87 +243,121 @@
       };
 
       // --- PAGE SECTIONS ---
-      const Navbar = ({ onNavigate }) => {
+      const Navbar = ({ onNavigate, onTriggerEffect }) => {
         const [isOpen, setIsOpen] = useState(false);
         const [scrolled, setScrolled] = useState(false);
+        const [isAnimating, setIsAnimating] = useState(false);
         const { openModal } = useModal();
         useEffect(() => { const handleScroll = () => setScrolled(window.scrollY > 20); window.addEventListener('scroll', handleScroll); return () => window.removeEventListener('scroll', handleScroll); }, []);
-        const handlePageClick = (page) => { setIsOpen(false); onNavigate(page); };
-        const handleAnchorLink = (e, anchor) => { e.preventDefault(); setIsOpen(false); onNavigate('home', anchor); };
-        const linkStyles = "text-sm font-medium text-slate-600 hover:text-brand-600 transition-colors cursor-pointer flex items-center";
+        
+        const closeMenu = () => setIsOpen(false);
+        const linkStyles = "text-sm font-medium text-slate-600 hover:text-brand-600 transition-colors flex items-center";
+        const mobileLinkStyles = "block w-full text-left px-4 py-3 rounded-xl text-base font-medium text-slate-700 hover:bg-brand-50 hover:text-brand-600";
+        
+        const handleLogoClick = (e) => {
+            e.preventDefault();
+            setIsAnimating(true);
+            onTriggerEffect();
+            onNavigate('home');
+            setTimeout(() => setIsAnimating(false), 600);
+        };
+
+        const handleNavClick = (e, page) => {
+            e.preventDefault();
+            onNavigate(page);
+            closeMenu();
+        };
+
+        const handleAnchorLink = (e, anchor) => {
+            e.preventDefault();
+            onNavigate('home', anchor);
+            closeMenu();
+        };
+
         return (
           <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${scrolled ? 'bg-white/90 backdrop-blur-md shadow-sm py-4' : 'bg-transparent py-6'}`}>
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="flex justify-between items-center">
-                <div className="flex items-center space-x-2 cursor-pointer" onClick={() => onNavigate('home')}>
-                  <div className="bg-brand-600 p-1.5 rounded-lg hover:rotate-12 transition-transform"><Bot className="h-6 w-6 text-white" /></div>
-                  <span className="text-2xl font-display font-bold text-slate-900 tracking-tight">HamyAI</span>
-                </div>
-                <div className="hidden lg:flex items-center space-x-8">
-                  <button onClick={() => handlePageClick('home')} className={linkStyles}>Startseite</button>
+                {/* Logo */}
+                <a href="index.html" className="flex items-center space-x-2 cursor-pointer group select-none" onClick={handleLogoClick}>
+                  <div className={`bg-brand-600 p-1.5 rounded-lg transition-transform ${isAnimating ? 'animate-barrel-roll' : 'group-hover:rotate-12'}`}><Bot className="h-6 w-6 text-white" /></div>
+                  <span className={`text-2xl font-display font-bold text-slate-900 tracking-tight transition-colors duration-300 ${isAnimating ? 'text-brand-600' : ''}`}>HamyAI</span>
+                </a>
+
+                {/* Desktop Nav */}
+                <div className="hidden xl:flex items-center space-x-6">
+                  <a href="index.html" className={linkStyles} onClick={(e) => handleNavClick(e, 'home')}>Startseite</a>
                   
-                   {/* Dropdown Menu */}
+                  {/* Dropdown */}
                   <div className="relative group">
-                    <button className={linkStyles}>
+                    <a href="#" className={linkStyles} onClick={(e) => e.preventDefault()}>
                       Für wen? <ChevronDown className="w-4 h-4 ml-1 transition-transform group-hover:rotate-180" />
-                    </button>
+                    </a>
                     <div className="absolute top-full left-1/2 -translate-x-1/2 pt-4 hidden group-hover:block w-56">
                        <div className="bg-white rounded-xl shadow-xl border border-slate-100 overflow-hidden p-2">
-                          <button onClick={() => handlePageClick('medical')} className="flex items-center gap-3 w-full text-left px-3 py-2 rounded-lg hover:bg-brand-50 text-slate-600 hover:text-brand-700 transition-colors">
+                          <a href="arztpraxen.html" className="flex items-center gap-3 w-full text-left px-3 py-2 rounded-lg hover:bg-brand-50 text-slate-600 hover:text-brand-700 transition-colors" onClick={(e) => handleNavClick(e, 'medical')}>
                              <div className="bg-emerald-100 p-1.5 rounded-md"><Stethoscope className="w-4 h-4 text-emerald-600"/></div>
                              <span className="text-sm font-medium">Arztpraxen</span>
-                          </button>
-                          <button onClick={() => handlePageClick('restaurant')} className="flex items-center gap-3 w-full text-left px-3 py-2 rounded-lg hover:bg-brand-50 text-slate-600 hover:text-brand-700 transition-colors">
-                             <div className="bg-orange-100 p-1.5 rounded-md"><Utensils className="w-4 h-4 text-orange-600"/></div>
-                             <span className="text-sm font-medium">Restaurants</span>
-                          </button>
-                          <button onClick={() => handlePageClick('pharmacy')} className="flex items-center gap-3 w-full text-left px-3 py-2 rounded-lg hover:bg-brand-50 text-slate-600 hover:text-brand-700 transition-colors">
-                             <div className="bg-teal-100 p-1.5 rounded-md"><Pill className="w-4 h-4 text-teal-600"/></div>
-                             <span className="text-sm font-medium">Apotheken</span>
-                          </button>
-                          <button onClick={() => handlePageClick('car-dealership')} className="flex items-center gap-3 w-full text-left px-3 py-2 rounded-lg hover:bg-brand-50 text-slate-600 hover:text-brand-700 transition-colors">
+                          </a>
+                          <a href="autohaeuser.html" className="flex items-center gap-3 w-full text-left px-3 py-2 rounded-lg hover:bg-brand-50 text-slate-600 hover:text-brand-700 transition-colors" onClick={(e) => handleNavClick(e, 'car-dealership')}>
                              <div className="bg-indigo-100 p-1.5 rounded-md"><Car className="w-4 h-4 text-indigo-600"/></div>
                              <span className="text-sm font-medium">Autohäuser</span>
-                          </button>
+                          </a>
+                          <a href="apotheken.html" className="flex items-center gap-3 w-full text-left px-3 py-2 rounded-lg hover:bg-brand-50 text-slate-600 hover:text-brand-700 transition-colors" onClick={(e) => handleNavClick(e, 'pharmacy')}>
+                             <div className="bg-teal-100 p-1.5 rounded-md"><Pill className="w-4 h-4 text-teal-600"/></div>
+                             <span className="text-sm font-medium">Apotheken</span>
+                          </a>
+                          <a href="restaurants.html" className="flex items-center gap-3 w-full text-left px-3 py-2 rounded-lg hover:bg-brand-50 text-slate-600 hover:text-brand-700 transition-colors" onClick={(e) => handleNavClick(e, 'restaurant')}>
+                             <div className="bg-orange-100 p-1.5 rounded-md"><Utensils className="w-4 h-4 text-orange-600"/></div>
+                             <span className="text-sm font-medium">Restaurants</span>
+                          </a>
                        </div>
                     </div>
                   </div>
 
-                  <a href="#feedback" onClick={(e) => handleAnchorLink(e, 'feedback')} className={linkStyles}>Feedback</a>
-                  <a href="#benefits" onClick={(e) => handleAnchorLink(e, 'benefits')} className={linkStyles}>Vorteile</a>
-                  <button onClick={() => handlePageClick('about')} className={linkStyles}>Über uns</button>
-                  <button onClick={() => handlePageClick('privacy')} className={linkStyles}>Datenschutz</button>
+                  <a href="feedback.html" className={linkStyles} onClick={(e) => handleAnchorLink(e, 'feedback')}>Feedback</a>
+                  <a href="vorteile.html" className={linkStyles} onClick={(e) => handleAnchorLink(e, 'benefits')}>Vorteile</a>
+                  <a href="ueber-uns.html" className={linkStyles} onClick={(e) => handleNavClick(e, 'about')}>Über uns</a>
+                  <a href="kontakt.html" className={linkStyles} onClick={(e) => { e.preventDefault(); openModal(); }}>Kontakt</a>
+                  <a href="datenschutz.html" className={linkStyles} onClick={(e) => handleNavClick(e, 'privacy')}>Datenschutz</a>
+                  <a href="impressum.html" className={linkStyles} onClick={(e) => handleNavClick(e, 'imprint')}>Impressum</a>
                 </div>
-                <div className="hidden md:block"><Button size="sm" onClick={openModal}>Demo buchen für 14 Tage</Button></div>
-                <div className="lg:hidden"><button onClick={() => setIsOpen(!isOpen)} className="text-slate-600 p-2">{isOpen ? <XIcon className="w-6 h-6" /> : <Menu className="w-6 h-6" />}</button></div>
+
+                {/* CTA & Mobile Toggle */}
+                <div className="hidden md:block ml-4"><Button size="sm" onClick={openModal}>Demo buchen</Button></div>
+                <div className="xl:hidden"><button onClick={() => setIsOpen(!isOpen)} className="text-slate-600 p-2">{isOpen ? <XIcon className="w-6 h-6" /> : <Menu className="w-6 h-6" />}</button></div>
               </div>
             </div>
+            
+            {/* Mobile Menu */}
             {isOpen && (
-              <div className="lg:hidden absolute top-full left-0 w-full bg-white border-b border-slate-100 shadow-xl animate-in slide-in-from-top-2">
+              <div className="xl:hidden absolute top-full left-0 w-full bg-white border-b border-slate-100 shadow-xl animate-in slide-in-from-top-2 h-[calc(100vh-80px)] overflow-y-auto">
                 <div className="px-4 pt-2 pb-6 space-y-1">
-                  <button className="block w-full text-left px-4 py-3 rounded-xl text-base font-medium text-slate-700 hover:bg-brand-50" onClick={() => handlePageClick('home')}>Startseite</button>
+                  <a href="index.html" className={mobileLinkStyles} onClick={(e) => handleNavClick(e, 'home')}>Startseite</a>
                   
-                  <div className="px-4 py-2">
+                  <div className="px-4 py-2 border-y border-slate-50 my-2">
                      <p className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Für wen?</p>
-                     <button className="flex items-center gap-3 w-full text-left py-2 text-base font-medium text-slate-700 hover:text-brand-600" onClick={() => handlePageClick('medical')}>
+                     <a href="arztpraxen.html" className="flex items-center gap-3 w-full text-left py-2 text-base font-medium text-slate-700 hover:text-brand-600" onClick={(e) => handleNavClick(e, 'medical')}>
                         <Stethoscope className="w-5 h-5"/> Arztpraxen
-                     </button>
-                     <button className="flex items-center gap-3 w-full text-left py-2 text-base font-medium text-slate-700 hover:text-brand-600" onClick={() => handlePageClick('restaurant')}>
-                        <Utensils className="w-5 h-5"/> Restaurants
-                     </button>
-                     <button className="flex items-center gap-3 w-full text-left py-2 text-base font-medium text-slate-700 hover:text-brand-600" onClick={() => handlePageClick('pharmacy')}>
-                        <Pill className="w-5 h-5"/> Apotheken
-                     </button>
-                     <button className="flex items-center gap-3 w-full text-left py-2 text-base font-medium text-slate-700 hover:text-brand-600" onClick={() => handlePageClick('car-dealership')}>
+                     </a>
+                     <a href="autohaeuser.html" className="flex items-center gap-3 w-full text-left py-2 text-base font-medium text-slate-700 hover:text-brand-600" onClick={(e) => handleNavClick(e, 'car-dealership')}>
                         <Car className="w-5 h-5"/> Autohäuser
-                     </button>
+                     </a>
+                     <a href="apotheken.html" className="flex items-center gap-3 w-full text-left py-2 text-base font-medium text-slate-700 hover:text-brand-600" onClick={(e) => handleNavClick(e, 'pharmacy')}>
+                        <Pill className="w-5 h-5"/> Apotheken
+                     </a>
+                     <a href="restaurants.html" className="flex items-center gap-3 w-full text-left py-2 text-base font-medium text-slate-700 hover:text-brand-600" onClick={(e) => handleNavClick(e, 'restaurant')}>
+                        <Utensils className="w-5 h-5"/> Restaurants
+                     </a>
                   </div>
 
-                  <button className="block w-full text-left px-4 py-3 rounded-xl text-base font-medium text-slate-700 hover:bg-brand-50" onClick={(e) => handleAnchorLink(e, 'feedback')}>Feedback</button>
-                  <button className="block w-full text-left px-4 py-3 rounded-xl text-base font-medium text-slate-700 hover:bg-brand-50" onClick={(e) => handleAnchorLink(e, 'benefits')}>Vorteile</button>
-                  <button className="block w-full text-left px-4 py-3 rounded-xl text-base font-medium text-slate-700 hover:bg-brand-50" onClick={() => handlePageClick('about')}>Über uns</button>
-                  <button className="block w-full text-left px-4 py-3 rounded-xl text-base font-medium text-slate-700 hover:bg-brand-50" onClick={() => handlePageClick('privacy')}>Datenschutz</button>
-                  <div className="pt-4 px-4"><Button className="w-full" onClick={() => { setIsOpen(false); openModal(); }}>Demo buchen</Button></div>
+                  <a href="feedback.html" className={mobileLinkStyles} onClick={(e) => handleAnchorLink(e, 'feedback')}>Feedback</a>
+                  <a href="vorteile.html" className={mobileLinkStyles} onClick={(e) => handleAnchorLink(e, 'benefits')}>Vorteile</a>
+                  <a href="ueber-uns.html" className={mobileLinkStyles} onClick={(e) => handleNavClick(e, 'about')}>Über uns</a>
+                  <a href="kontakt.html" className={mobileLinkStyles} onClick={(e) => { e.preventDefault(); closeMenu(); openModal(); }}>Kontakt</a>
+                  <a href="datenschutz.html" className={mobileLinkStyles} onClick={(e) => handleNavClick(e, 'privacy')}>Datenschutz</a>
+                  <a href="impressum.html" className={mobileLinkStyles} onClick={(e) => handleNavClick(e, 'imprint')}>Impressum</a>
+                  <div className="pt-4 px-4"><Button className="w-full" onClick={() => { closeMenu(); openModal(); }}>Demo buchen</Button></div>
                 </div>
               </div>
             )}
@@ -996,6 +1046,42 @@
       const AppContent = () => {
         const { isModalOpen, closeModal } = useModal();
         const [currentPage, setCurrentPage] = useState('home');
+        const [isGlobalAnimating, setIsGlobalAnimating] = useState(false);
+        const [confetti, setConfetti] = useState([]);
+
+        // Dynamic Title Logic
+        useEffect(() => {
+            const pageTitles = {
+                'home': 'HamyAI - KI Chatbots für Unternehmen',
+                'medical': 'HamyAI - KI Lösungen für Arztpraxen',
+                'restaurant': 'HamyAI - Digitale Assistenten für Restaurants',
+                'pharmacy': 'HamyAI - Automatisierung für Apotheken',
+                'car-dealership': 'HamyAI - KI Chatbots für Autohäuser',
+                'about': 'Über uns - HamyAI',
+                'privacy': 'Datenschutzerklärung - HamyAI',
+                'imprint': 'Impressum - HamyAI'
+            };
+            
+            const title = pageTitles[currentPage] || 'HamyAI - KI Chatbots für Unternehmen';
+            document.title = title;
+        }, [currentPage]);
+
+        const triggerEasterEgg = () => {
+          setIsGlobalAnimating(true);
+          // Create confetti
+          const newConfetti = Array.from({ length: 50 }).map((_, i) => ({
+            id: i,
+            left: Math.random() * 100,
+            color: ['#ff0000', '#00ff00', '#0000ff', '#ffff00', '#ff00ff'][Math.floor(Math.random() * 5)],
+            delay: Math.random() * 0.5
+          }));
+          setConfetti(newConfetti);
+          
+          setTimeout(() => {
+            setIsGlobalAnimating(false);
+            setConfetti([]);
+          }, 1500);
+        };
         
         const performPreciseScroll = (anchorId) => {
             const element = document.getElementById(anchorId);
@@ -1023,19 +1109,33 @@
         }, [currentPage]);
 
         return (
-          <div className="min-h-screen flex flex-col font-sans text-slate-600">
-            <Navbar onNavigate={navigateTo} />
-            <main className="flex-grow">
-              {currentPage === 'home' && <><Hero /><TrustBanner /><FeaturesGrid /><Pricing /><FeedbackSection /></>}
-              {currentPage === 'about' && <AboutUs />}
-              {currentPage === 'medical' && <MedicalPage />}
-              {currentPage === 'restaurant' && <RestaurantPage />}
-              {currentPage === 'pharmacy' && <PharmacyPage />}
-              {currentPage === 'car-dealership' && <CarDealershipPage />}
-              {currentPage === 'privacy' && <PrivacyPolicy />}
-              {currentPage === 'imprint' && <Imprint />}
-            </main>
-            <Footer onNavigate={navigateTo} />
+          <div className="min-h-screen flex flex-col font-sans text-slate-600 overflow-hidden relative">
+            {confetti.map(c => (
+              <div 
+                key={c.id} 
+                className="confetti" 
+                style={{ 
+                  left: `${c.left}vw`, 
+                  backgroundColor: c.color, 
+                  animationDelay: `${c.delay}s`,
+                  top: '-20px'
+                }} 
+              />
+            ))}
+            <div className={`flex flex-col min-h-screen transition-transform duration-1000 ${isGlobalAnimating ? 'animate-super-spin' : ''}`}>
+                <Navbar onNavigate={navigateTo} onTriggerEffect={triggerEasterEgg} />
+                <main className="flex-grow">
+                  {currentPage === 'home' && <><Hero /><TrustBanner /><FeaturesGrid /><Pricing /><FeedbackSection /></>}
+                  {currentPage === 'about' && <AboutUs />}
+                  {currentPage === 'medical' && <MedicalPage />}
+                  {currentPage === 'restaurant' && <RestaurantPage />}
+                  {currentPage === 'pharmacy' && <PharmacyPage />}
+                  {currentPage === 'car-dealership' && <CarDealershipPage />}
+                  {currentPage === 'privacy' && <PrivacyPolicy />}
+                  {currentPage === 'imprint' && <Imprint />}
+                </main>
+                <Footer onNavigate={navigateTo} />
+            </div>
             <Modal isOpen={isModalOpen} onClose={closeModal} title="Demo buchen"><ContactForm /></Modal>
           </div>
         );
