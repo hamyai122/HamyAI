@@ -84,19 +84,7 @@
       .animate-pulse-ring { animation: pulse-ring 2.5s cubic-bezier(0.455, 0.03, 0.515, 0.955) infinite; }
       .mask-gradient { mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent); -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent); }
     </style>
-  <script type="importmap">
-{
-  "imports": {
-    "react": "https://esm.sh/react@^19.2.4",
-    "lucide-react": "https://esm.sh/lucide-react@^0.563.0",
-    "react/": "https://esm.sh/react@^19.2.4/",
-    "react-dom": "https://esm.sh/react-dom@^19.2.4",
-    "vite": "https://esm.sh/vite@^7.3.1",
-    "@vitejs/plugin-react": "https://esm.sh/@vitejs/plugin-react@^5.1.2"
-  }
-}
-</script>
-<link rel="stylesheet" href="/index.css">
+    <link rel="stylesheet" href="/index.css">
 </head>
   <body class="antialiased text-slate-600 bg-white selection:bg-brand-100 selection:text-brand-900 overflow-x-hidden">
     <div id="root"></div>
@@ -104,7 +92,7 @@
     <script type="text/babel">
       const { useState, useEffect, useRef, createContext, useContext } = React;
 
-      // --- SVG ICONS (Hardcoded for stability) ---
+      // --- SVG ICONS ---
       const Icon = ({ children, className = "", size = 24, ...props }) => (
         <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={`lucide ${className}`} {...props}>
           {children}
@@ -291,7 +279,7 @@
                   <button onClick={() => handlePageClick('about')} className={linkStyles}>Über uns</button>
                   <button onClick={() => handlePageClick('privacy')} className={linkStyles}>Datenschutz</button>
                 </div>
-                <div className="hidden md:block"><Button size="sm" onClick={openModal}>Testphase buchen für 14 Tage!</Button></div>
+                <div className="hidden md:block"><Button size="sm" onClick={openModal}>Demo buchen für 14 Tage</Button></div>
                 <div className="lg:hidden"><button onClick={() => setIsOpen(!isOpen)} className="text-slate-600 p-2">{isOpen ? <XIcon className="w-6 h-6" /> : <Menu className="w-6 h-6" />}</button></div>
               </div>
             </div>
@@ -361,7 +349,7 @@
                   <div className="inline-flex items-center px-3 py-1 rounded-full bg-brand-50 text-brand-700 text-sm font-medium mb-6 animate-fade-in-up"><span className="w-2 h-2 rounded-full bg-brand-500 mr-2"></span> Teams entlasten</div>
                   <h1 className="text-5xl lg:text-7xl font-display font-extrabold text-slate-900 leading-tight mb-6 tracking-tight">KI Chatbots <br /> für ihr <span className="text-slate-900">Unternehmen</span></h1>
                   <p className="text-lg text-slate-600 mb-8 max-w-xl mx-auto lg:mx-0">Wir bieten KI-Chatbots an - ganz nach deinen Bedürfnissen via Superchat. Skalierbar, sicher und in wenigen Minuten einsatzbereit.</p>
-                  <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-12"><Button size="lg" icon onClick={openModal}>Demotermin buchen</Button></div>
+                  <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-12"><Button size="lg" icon onClick={openModal}>14 Tage kostenlos testen!</Button></div>
                 </div>
                 <div className="relative mx-auto w-full max-w-lg lg:max-w-full perspective-1000">
                   <div className="absolute -top-12 -right-4 lg:right-0 z-20 bg-white p-4 rounded-xl shadow-[0_20px_50px_rgba(0,0,0,0.1)] flex items-center gap-3 animate-float-delayed border border-slate-100 hidden sm:flex"><div className="bg-brand-100 p-2 rounded-full"><CheckCircle2 className="w-6 h-6 text-brand-600" /></div><div><p className="text-sm font-bold text-slate-900">Lead Qualifiziert</p><p className="text-xs text-slate-500">Vor 2 Minuten</p></div></div>
@@ -458,7 +446,7 @@
               <div className="grid lg:grid-cols-2 gap-16 items-center">
                  <div>
                    <div className="inline-flex items-center px-3 py-1 rounded-full bg-brand-100 text-brand-700 text-xs font-bold uppercase tracking-wider mb-6">Ihre Vorteile</div>
-                   <h2 className="text-3xl md:text-4xl font-display font-bold text-slate-900 mb-6">Warum hamyAI und Superchat die beste Wahl für Ihr Wachstum ist</h2>
+                   <h2 className="text-3xl md:text-4xl font-display font-bold text-slate-900 mb-6">Warum hamyAI die beste Wahl für Ihr Wachstum ist</h2>
                    <p className="text-lg text-slate-600 mb-8">Wir automatisieren nicht nur Gespräche – wir schaffen Erlebnisse, die Ihre Kunden lieben und Ihr Team entlasten.</p>
                    <div className="grid sm:grid-cols-2 gap-4">
                       <div className="bg-white/60 p-6 rounded-2xl text-center"><TrendingUp className="w-8 h-8 text-brand-600 mb-3 mx-auto"/><span className="text-2xl font-bold block text-slate-900">70%</span><span className="text-xs uppercase font-bold text-slate-500">Kostenersparnis</span></div>
@@ -589,14 +577,14 @@
                      <h2 className="text-3xl font-display font-bold text-slate-900 mb-6">Vom Traum zur Vision</h2>
                      <div className="space-y-4 text-lg text-slate-600 leading-relaxed">
                         <p>
-                            "Schon als kleiner Junge haben mich die ganz großen Unternehmer begeistert, weswegen ich mein eigenes Unternehmen HamyAI gegründet habe."
+                            "Schon als kleiner Junge haben mich die ganz großen Unternehmer bzw Selbstständigen begeistert und habe deswegen das Unternehmen HamyAI gegründet."
                         </p>
                         <p>
-                            "Mein Ziel ist es mithilfe von KI, Unternehmen, sei es Autohaus, Praxen, Restaurants oder einfach nur für deine nächste Millionen-Idee, den Alltag zu verbessern und Zeit zu sparen, um sich auf die wirklich wichtigeren Dinge zu konzentrieren."
+                            "Ziel ist es mit der Power von KI jeden Unternehmer, sei es Autohaus, Praxen, Restaurant oder einfach nur fuer deine neue Millionen-Idee, näher zu bringen und so 1 mehr Zeit und mehr Kunden zu gewinnen."
                         </p>
                         <div className="bg-brand-50/50 p-6 rounded-2xl border border-brand-100 mt-6">
                             <p className="font-medium text-slate-800">
-                                "Etwa 70 % bis über 80 % der deutschen Bevölkerung nutzen WhatsApp, was den Messenger zur beliebtesten App dieser Art in Deutschland macht. Warum diesen nicht in euren Unternehmen integrieren?"
+                                "Etwa 70 % bis über 80 % der deutschen Bevölkerung nutzen WhatsApp, was den Messenger zur beliebtesten App dieser Art in Deutschland macht. Warum diesen nicht in euren Unternehmen nutzen?"
                             </p>
                         </div>
                      </div>
@@ -668,30 +656,25 @@
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <h1 className="text-4xl font-display font-bold text-slate-900 mb-12">Impressum</h1>
             <div className="prose prose-slate max-w-none space-y-8 text-slate-600">
-              <section>
-                <h2 className="text-2xl font-bold text-slate-900 mb-4">Angaben gemäß § 5 DDG</h2>
                 <p>
-                  HamyAI<br/>
-                  auf der ahr 5<br/>
-                  56575 weisenthurm
+                  Hussein Hamy<br />
+                  Auf der Ahr 5<br />
+                  56575 Weisenthurm
                 </p>
-              </section>
-              <section>
-                <h2 className="text-2xl font-bold text-slate-900 mb-4">Vertreten durch</h2>
-                <p>Hussein Hamy</p>
-              </section>
-              <section>
+
                 <h2 className="text-2xl font-bold text-slate-900 mb-4">Kontakt</h2>
                 <p>
-                  Telefon: 49-017663815794<br/>
+                  Telefon: 017663815794<br />
                   E-Mail: chatbothamy@gmail.com
                 </p>
-              </section>
-              <section>
-                <h2 className="text-2xl font-bold text-slate-900 mb-4">Verbraucherstreitbeilegung / Universalschlichtungsstelle</h2>
-                <p>Wir nehmen nicht an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teil und sind dazu auch nicht verpflichtet.</p>
-              </section>
-              <p className="text-sm text-slate-400">Erstellt mit dem Impressum-Generator von WebsiteWissen.com, dem Ratgeber für Website-Erstellung, Homepage-Baukästen und Shopsysteme. Rechtstext von der Kanzlei Hasselbach.</p>
+
+                <h2 className="text-2xl font-bold text-slate-900 mb-4">Redaktionell verantwortlich</h2>
+                <p>Hussein Hamy</p>
+
+                <h2 className="text-2xl font-bold text-slate-900 mb-4">Verbraucherstreitbeilegung/Universalschlichtungsstelle</h2>
+                <p>Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.</p>
+
+                <p>Quelle: <a href="https://www.e-recht24.de" className="text-brand-600 hover:text-brand-700 underline">https://www.e-recht24.de</a></p>
             </div>
           </div>
         </div>
@@ -997,12 +980,5 @@
       const root = ReactDOM.createRoot(document.getElementById('root'));
       root.render(<App />);
     </script>
-    
-<script
-  src='https://widget.superchat.de/snippet.js?applicationKey=WCeQ4yOnq8brR6dpr0RogLzPN7'
-  referrerpolicy='no-referrer-when-downgrade'>
-  
-  </script>
-    
 </body>
 </html>
