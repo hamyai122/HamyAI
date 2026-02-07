@@ -5,20 +5,93 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>HamyAI - KI Chatbots für Unternehmen</title>
     
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-
-    <!-- React & ReactDOM -->
-    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
-    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
     
-    <!-- Babel Standalone -->
-    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="682233a0-384d-47a2-a816-e00305c6115d" data-blockingmode="auto" type="text/javascript"></script>
+    
+    <!-- Favicon -->
+ 	
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 36 36'%3E%3Crect width='36' height='36' rx='8' fill='%23059669'/%3E%3Cg transform='translate(6,6)' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' fill='none'%3E%3Cpath d='M12 8V4H8'/%3E%3Crect width='16' height='12' x='4' y='8' rx='2'/%3E%3Cpath d='M2 14h2'/%3E%3Cpath d='M20 14h2'/%3E%3Cpath d='M15 13v2'/%3E%3Cpath d='M9 13v2'/%3E%3C/g%3E%3C/svg%3E" />
+	 
+    <style>
+      @font-face {
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 400;
+        font-display: swap;
+        src: url('/fonts/Inter-Regular.woff2') format('woff2');
+      }
+      @font-face {
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 500;
+        font-display: swap;
+        src: url('/fonts/Inter-Medium.woff2') format('woff2');
+      }
+      @font-face {
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 600;
+        font-display: swap;
+        src: url('/fonts/Inter-SemiBold.woff2') format('woff2');
+      }
+      @font-face {
+        font-family: 'Plus Jakarta Sans';
+        font-style: normal;
+        font-weight: 300;
+        font-display: swap;
+        src: url('/fonts/PlusJakartaSans-Light.woff2') format('woff2');
+      }
+      @font-face {
+        font-family: 'Plus Jakarta Sans';
+        font-style: normal;
+        font-weight: 400;
+        font-display: swap;
+        src: url('/fonts/PlusJakartaSans-Regular.woff2') format('woff2');
+      }
+      @font-face {
+        font-family: 'Plus Jakarta Sans';
+        font-style: normal;
+        font-weight: 500;
+        font-display: swap;
+        src: url('/fonts/PlusJakartaSans-Medium.woff2') format('woff2');
+      }
+      @font-face {
+        font-family: 'Plus Jakarta Sans';
+        font-style: normal;
+        font-weight: 600;
+        font-display: swap;
+        src: url('/fonts/PlusJakartaSans-SemiBold.woff2') format('woff2');
+      }
+      @font-face {
+        font-family: 'Plus Jakarta Sans';
+        font-style: normal;
+        font-weight: 700;
+        font-display: swap;
+        src: url('/fonts/PlusJakartaSans-Bold.woff2') format('woff2');
+      }
+      @font-face {
+        font-family: 'Plus Jakarta Sans';
+        font-style: normal;
+        font-weight: 800;
+        font-display: swap;
+        src: url('/fonts/PlusJakartaSans-ExtraBold.woff2') format('woff2');
+      }
+    
+    </style>
+    
+    <!-- ⬆️⬆️⬆️ BIS HIER ⬆️⬆️⬆️ -->
+    
+<!-- Tailwind CSS (Lokal) -->
+<script src="/js/tailwind.js"></script>
 
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<!-- React & ReactDOM (Lokal) -->
+<script src="/js/react.js"></script>
+<script src="/js/react-dom.js"></script>
+    
+<!-- Babel Standalone (Lokal) -->
+<script src="/js/babel.js"></script>
+
+    
     
     <!-- Tailwind Configuration -->
     <script>
@@ -318,9 +391,7 @@
                   <a href="feedback.html" className={linkStyles} onClick={(e) => handleAnchorLink(e, 'feedback')}>Feedback</a>
                   <a href="vorteile.html" className={linkStyles} onClick={(e) => handleAnchorLink(e, 'benefits')}>Vorteile</a>
                   <a href="ueber-uns.html" className={linkStyles} onClick={(e) => handleNavClick(e, 'about')}>Über uns</a>
-                  <a href="kontakt.html" className={linkStyles} onClick={(e) => { e.preventDefault(); openModal(); }}>Kontakt</a>
                   <a href="datenschutz.html" className={linkStyles} onClick={(e) => handleNavClick(e, 'privacy')}>Datenschutz</a>
-                  <a href="impressum.html" className={linkStyles} onClick={(e) => handleNavClick(e, 'imprint')}>Impressum</a>
                 </div>
 
                 {/* CTA & Mobile Toggle */}
@@ -354,9 +425,7 @@
                   <a href="feedback.html" className={mobileLinkStyles} onClick={(e) => handleAnchorLink(e, 'feedback')}>Feedback</a>
                   <a href="vorteile.html" className={mobileLinkStyles} onClick={(e) => handleAnchorLink(e, 'benefits')}>Vorteile</a>
                   <a href="ueber-uns.html" className={mobileLinkStyles} onClick={(e) => handleNavClick(e, 'about')}>Über uns</a>
-                  <a href="kontakt.html" className={mobileLinkStyles} onClick={(e) => { e.preventDefault(); closeMenu(); openModal(); }}>Kontakt</a>
                   <a href="datenschutz.html" className={mobileLinkStyles} onClick={(e) => handleNavClick(e, 'privacy')}>Datenschutz</a>
-                  <a href="impressum.html" className={mobileLinkStyles} onClick={(e) => handleNavClick(e, 'imprint')}>Impressum</a>
                   <div className="pt-4 px-4"><Button className="w-full" onClick={() => { closeMenu(); openModal(); }}>Demo buchen</Button></div>
                 </div>
               </div>
@@ -407,8 +476,40 @@
                   <div className="bg-white rounded-2xl shadow-[0_30px_60px_-15px_rgba(0,0,0,0.15)] border border-slate-100 overflow-hidden relative z-10 hover:scale-[1.01] duration-500">
                     <div className="bg-slate-50/50 p-4 border-b border-slate-100 flex items-center gap-3"><div className="bg-brand-600 p-1.5 rounded-lg"><MessageSquare className="w-5 h-5 text-white" /></div><div><h3 className="font-bold text-slate-900 text-sm">hamyAI Assistant</h3><div className="flex items-center gap-1.5"><span className="w-2 h-2 bg-brand-500 rounded-full animate-pulse"></span><span className="text-xs text-brand-600 font-medium">Online</span></div></div></div>
                     <div className="p-6 space-y-6 bg-white min-h-[400px] flex flex-col">
-                      {messages.map((msg) => (<div key={msg.id} className={`flex gap-3 ${msg.role === 'user' ? 'justify-end' : ''} animate-in fade-in slide-in-from-bottom-2`}>{msg.role === 'bot' && <div className="w-8 h-8 rounded-full bg-brand-100 flex items-center justify-center flex-shrink-0"><span className="text-xs font-bold text-brand-600">AI</span></div>}<div className={`space-y-3 max-w-[85%] ${msg.role === 'user' ? 'text-right' : ''}`}><div className={`p-4 text-sm rounded-2xl inline-block text-left ${msg.role === 'user' ? 'bg-brand-600 text-white rounded-tr-none' : 'bg-slate-50 text-slate-600 rounded-tl-none'}`}>{msg.text}</div>{msg.hasChart && (<div className="bg-white border border-slate-100 rounded-xl p-4 shadow-sm inline-block w-full"><div className="flex items-end gap-2 h-24 mb-2">{[40, 60, 80, 95].map((h, i) => <div key={i} className={`w-1/4 bg-brand-${200+i*100} rounded-t`} style={{height: `${h}%`}}></div>)}</div></div>)}</div>{msg.role === 'user' && <img src="https://picsum.photos/32/32?random=user" alt="User" className="w-8 h-8 rounded-full border-2 border-white shadow-sm" />}</div>))}
-                      {isTyping && (<div className="flex gap-3 animate-in fade-in duration-200"><div className="w-8 h-8 rounded-full bg-brand-100 flex items-center justify-center flex-shrink-0"><span className="text-xs font-bold text-brand-600">AI</span></div><div className="bg-slate-50 rounded-2xl rounded-tl-none p-4 text-sm text-slate-600"><TypingIndicator /></div></div>)}
+                      {messages.map((msg) => (
+  <div key={msg.id} className={`flex gap-3 ${msg.role === 'user' ? 'justify-end' : ''} animate-in fade-in slide-in-from-bottom-2`}>
+    
+    {/* 1. BOT AVATAR (LINKS) */}
+    {msg.role === 'bot' && (
+      <div className="w-8 h-8 rounded-full bg-brand-100 flex items-center justify-center flex-shrink-0">
+        <span className="text-xs font-bold text-brand-600">AI</span>
+      </div>
+    )}
+
+    {/* 2. NACHRICHTEN TEXT (MITTE) */}
+    <div className={`space-y-3 max-w-[85%] ${msg.role === 'user' ? 'text-right' : ''}`}>
+      <div className={`p-4 text-sm rounded-2xl inline-block text-left ${msg.role === 'user' ? 'bg-brand-600 text-white rounded-tr-none' : 'bg-slate-50 text-slate-600 rounded-tl-none'}`}>
+        {msg.text}
+      </div>
+      {/* Chart falls vorhanden */}
+      {msg.hasChart && (
+        <div className="bg-white border border-slate-100 rounded-xl p-4 shadow-sm inline-block w-full">
+          <div className="flex items-end gap-2 h-24 mb-2">
+            {[40, 60, 80, 95].map((h, i) => <div key={i} className={`w-1/4 bg-brand-${200+i*100} rounded-t`} style={{height: `${h}%`}}></div>)}
+          </div>
+        </div>
+      )}
+    </div>
+
+    {/* 3. USER AVATAR (RECHTS) - Hier war der Fehler */}
+    {msg.role === 'user' && (
+      <div className="w-8 h-8 rounded-full bg-slate-200 flex items-center justify-center border-2 border-white shadow-sm flex-shrink-0">
+        <span className="text-xs font-bold text-slate-600">Du</span>
+      </div>
+    )}
+    
+  </div>
+))}<div className="flex gap-3 animate-in fade-in duration-200"><div className="w-8 h-8 rounded-full bg-brand-100 flex items-center justify-center flex-shrink-0"><span className="text-xs font-bold text-brand-600">AI</span></div><div className="bg-slate-50 rounded-2xl rounded-tl-none p-4 text-sm text-slate-600"><TypingIndicator /></div></div>)}
                     </div>
                     <div className="p-4 border-t border-slate-50"><div className="bg-slate-50 rounded-full h-10 w-full border border-slate-100 px-4 flex items-center text-sm text-slate-400 cursor-not-allowed">Schreiben Sie eine Nachricht...</div></div>
                   </div>
@@ -582,6 +683,65 @@
             </div>
         </section>
       );
+      
+      const TermsOfService = () => (
+        <div className="pt-32 pb-24">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h1 className="text-4xl font-display font-bold text-slate-900 mb-12">Allgemeine Geschäftsbedingungen (AGB)</h1>
+            <p className="text-sm text-slate-500 mb-8">Stand: Februar 2026</p>
+            <div className="prose prose-slate max-w-none space-y-8 text-slate-600">
+                <h2 className="text-2xl font-bold text-slate-900 mb-4">§ 1 Geltungsbereich & Vertragspartner</h2>
+                <p>(1) Diese Allgemeinen Geschäftsbedingungen (nachfolgend „AGB“) gelten für alle Verträge über die Konfiguration von Chatbots und Automatisierungslösungen, die zwischen Hamy AI / Inhaber: Hussein Hamy, ansässig in Auf der Ahr 5, 56575 Weisenthurm (nachfolgend „Auftragnehmer“) und dem Kunden (nachfolgend „Auftraggeber“) geschlossen werden.</p>
+                <p>(2) Das Angebot richtet sich ausschließlich an Unternehmer im Sinne des § 14 BGB sowie an juristische Personen des öffentlichen Rechts. Ein Vertragsschluss mit Verbrauchern (§ 13 BGB) findet nicht statt.</p>
+                <p>(3) Abweichende oder entgegenstehende Bedingungen des Auftraggebers erkennt der Auftragnehmer nicht an, es sei denn, er hat ihrer Geltung ausdrücklich schriftlich zugestimmt.</p>
+
+                <h2 className="text-2xl font-bold text-slate-900 mb-4">§ 2 Vertragsgegenstand & Leistungsumfang</h2>
+                <p>(1) Der Auftragnehmer konfiguriert für den Auftraggeber Kommunikationslösungen (Chatbots) auf Basis der Drittanbieter-Plattform „Superchat“.</p>
+                <p>(2) Der Leistungsumfang im Bereich „Setup“ umfasst – je nach individuellem Angebot – die technische Anbindung von Kommunikationskanälen (z. B. WhatsApp Business API, Instagram, Webchat), die Erstellung von Gesprächsleitfäden (Flows), das „Prompting“ (Anweisungserstellung) für KI-Modelle sowie die Integration von Schnittstellen-Tools (z. B. Zapier, Make, Calendly, Google Calendar).</p>
+                <p>(3) Der Auftragnehmer schuldet die fachgerechte Konfiguration und Verbindung dieser Dienste, nicht jedoch die Programmierung einer eigenen Software. Der Erfolg bestimmter Marketingziele (z. B. Anzahl generierter Leads) wird nicht geschuldet, sofern nicht ausdrücklich vereinbart.</p>
+
+                <h2 className="text-2xl font-bold text-slate-900 mb-4">§ 3 Vergütung, Testphase & Fälligkeit</h2>
+                <p>(1) Alle genannten Preise sind Nettopreise in Euro und verstehen sich zuzüglich der jeweils gültigen gesetzlichen Umsatzsteuer.</p>
+                <p>(2) Setup-Gebühr: Für die einmalige Einrichtung und Konfiguration des Chatbots wird eine Pauschale in Höhe von 2.249,00 Euro vereinbart.</p>
+                <p>(3) Kostenlose Testphase & Automatische Fälligkeit: Abweichend von einer sofortigen Zahlung wird dem Auftraggeber nach Fertigstellung des Chatbots eine kostenlose Testphase von 14 Tagen gewährt.</p>
+                <p>Der Auftraggeber kann den konfigurierten Chatbot in diesem Zeitraum uneingeschränkt prüfen.<br/>
+                Entscheidet sich der Auftraggeber gegen das Produkt, muss er dies dem Auftragnehmer vor Ablauf der 14 Tage in Textform (z. B. E-Mail) mitteilen. In diesem Fall fallen keine Setup-Gebühren an.<br/>
+                <strong>WICHTIG:</strong> Erfolgt innerhalb der 14-tägigen Frist keine Kündigung/Ablehnung, gilt der Chatbot als abgenommen und gekauft. Die volle Setup-Gebühr in Höhe von 2.249,00 Euro wird am 15. Tag nach Bereitstellung sofort fällig.</p>
+                <p>(4) Wartungspauschale (Optional): Beauftragt der Auftraggeber die laufende Betreuung (Monitoring, Fehlerbehebung, Prompt-Optimierung), beträgt die Vergütung hierfür 500,00 Euro pro Monat. Die Berechnung beginnt erst nach Ablauf der kostenlosen Testphase, sofern der Kunde den Chatbot behält.</p>
+                <p>(5) Fremdkosten: Kosten für Software-Lizenzen Dritter (insbesondere Superchat, OpenAI, Zapier) sind von der kostenlosen Testphase des Auftragnehmers ausgenommen, sofern der Drittanbieter (z. B. Superchat) diese berechnet. Diese Kosten trägt der Auftraggeber direkt gegenüber dem Anbieter.</p>
+
+                <h2 className="text-2xl font-bold text-slate-900 mb-4">§ 4 Bereitstellung & Abnahme</h2>
+                <p>(1) Der Auftragnehmer zeigt dem Auftraggeber die Fertigstellung der Konfiguration an (Beginn der Testphase).</p>
+                <p>(2) Mit Ablauf der in § 3 Abs. 3 genannten 14-tägigen Testphase gilt die Leistung als vertragsgemäß abgenommen (§ 640 Abs. 2 BGB), sofern der Auftraggeber nicht widersprochen hat.</p>
+
+                <h2 className="text-2xl font-bold text-slate-900 mb-4">§ 5 Laufzeit & Kündigung (Wartungsvertrag)</h2>
+                <p>(1) Sofern die Wartungspauschale gebucht wurde und die Testphase erfolgreich beendet ist, läuft dieser Vertragsteil auf unbestimmte Zeit.</p>
+                <p>(2) Der Wartungsvertrag kann von beiden Parteien mit einer Frist von 14 Tagen zum Monatsende gekündigt werden.</p>
+                <p>(3) Die Kündigung bedarf der Textform (z. B. per E-Mail).</p>
+                <p>(4) Das Recht zur außerordentlichen Kündigung aus wichtigem Grund bleibt unberührt.</p>
+
+                <h2 className="text-2xl font-bold text-slate-900 mb-4">§ 6 Haftungsausschluss & KI-Risiken</h2>
+                <p>(1) KI-Halluzinationen: Der Auftraggeber nimmt zur Kenntnis, dass KI-Sprachmodelle (LLMs wie GPT-4) auf Wahrscheinlichkeiten basieren. Es kann technisch bedingt zu fehlerhaften, unpassenden oder erfundenen Aussagen („Halluzinationen“) kommen. Der Auftragnehmer übernimmt keine Haftung für inhaltlich falsche Auskünfte, die der Chatbot gegenüber Endkunden tätigt. Die Überwachung der KI-Antworten obliegt dem Auftraggeber.</p>
+                <p>(2) Plattform-Risiko: Der Auftragnehmer haftet nicht für Schäden, die durch Ausfälle, API-Änderungen oder Sperrungen seitens der Plattformbetreiber (z. B. Meta/WhatsApp, Superchat, OpenAI) entstehen.</p>
+                <p>(3) Der Auftragnehmer haftet unbeschränkt bei Vorsatz und grober Fahrlässigkeit. Bei einfacher Fahrlässigkeit haftet er nur bei Verletzung wesentlicher Vertragspflichten.</p>
+
+                <h2 className="text-2xl font-bold text-slate-900 mb-4">§ 7 Datenschutz (DSGVO)</h2>
+                <p>(1) Die Parteien sind sich einig, dass im Rahmen der Leistungserbringung personenbezogene Daten verarbeitet werden.</p>
+                <p>(2) Auftragsverarbeitung: Soweit der Auftragnehmer Zugriff auf personenbezogene Daten des Auftraggebers hat, handelt er als Auftragsverarbeiter. Die Parteien schließen hierzu einen gesonderten Auftragsverarbeitungsvertrag (AVV) gemäß Art. 28 DSGVO ab.</p>
+                <p>(3) Der Auftraggeber stellt sicher, dass er berechtigt ist, die Daten seiner Endkunden an die genutzten Tools zu übermitteln.</p>
+
+                <h2 className="text-2xl font-bold text-slate-900 mb-4">§ 8 Mitwirkungspflichten</h2>
+                <p>(1) Der Auftraggeber ist verpflichtet, dem Auftragnehmer alle für die Durchführung nötigen Zugänge (z. B. Meta Business Manager, Superchat-Login) unverzüglich zur Verfügung zu stellen.</p>
+                <p>(2) Verzögerungen durch fehlende Mitwirkung verlängern die Bereitstellungsfristen entsprechend.</p>
+
+                <h2 className="text-2xl font-bold text-slate-900 mb-4">§ 9 Schlussbestimmungen</h2>
+                <p>(1) Es gilt das Recht der Bundesrepublik Deutschland.</p>
+                <p>(2) Gerichtsstand für alle Streitigkeiten aus diesem Vertrag ist der Geschäftssitz des Auftragnehmers: Weisenthurm.</p>
+                <p>(3) Sollten einzelne Bestimmungen dieses Vertrages unwirksam sein, bleibt die Wirksamkeit der übrigen Bestimmungen unberührt.</p>
+            </div>
+          </div>
+        </div>
+      );
 
       const Footer = ({ onNavigate }) => {
         const { openModal } = useModal();
@@ -594,9 +754,9 @@
                   <div className="flex items-center space-x-2 mb-6 cursor-pointer group" onClick={() => onNavigate('home')}><div className="bg-brand-600 p-1.5 rounded-lg group-hover:rotate-12 transition-transform duration-300"><Bot className="h-6 w-6 text-white" /></div><span className="text-2xl font-display font-bold text-white tracking-tight">HamyAI</span></div>
                   <p className="text-sm text-slate-400 mb-6 max-w-xs leading-relaxed">Revolutionierung der Kundeninteraktion mit sicheren, in Deutschland entwickelten KI-Lösungen.</p>
                 </div>
-                <div className="col-span-2 lg:col-span-2"><h4 className="font-bold text-white mb-6">Unternehmen</h4><ul className="space-y-4 text-sm"><li><a href="#" onClick={(e) => handleLinkClick(e, 'about')} className="hover:text-brand-400 transition-colors">Über uns</a></li><li><a href="#" onClick={(e) => handleLinkClick(e, 'contact')} className="hover:text-brand-400 transition-colors">Kontakt</a></li><li><a href="#" onClick={(e) => handleLinkClick(e, 'privacy')} className="hover:text-brand-400 transition-colors">Datenschutz</a></li><li><a href="#" onClick={(e) => handleLinkClick(e, 'imprint')} className="hover:text-brand-400 transition-colors">Impressum</a></li></ul></div>
+                <div className="col-span-2 lg:col-span-2"><h4 className="font-bold text-white mb-6">Unternehmen</h4><ul className="space-y-4 text-sm"><li><a href="#" onClick={(e) => handleLinkClick(e, 'about')} className="hover:text-brand-400 transition-colors">Über uns</a></li><li><a href="#" onClick={(e) => handleLinkClick(e, 'contact')} className="hover:text-brand-400 transition-colors">Kontakt</a></li><li><a href="#" onClick={(e) => handleLinkClick(e, 'privacy')} className="hover:text-brand-400 transition-colors">Datenschutz</a></li><li><a href="#" onClick={(e) => handleLinkClick(e, 'imprint')} className="hover:text-brand-400 transition-colors">Impressum</a></li><li><a href="#" onClick={(e) => handleLinkClick(e, 'agb')} className="hover:text-brand-400 transition-colors">AGB</a></li></ul></div>
               </div>
-              <div className="pt-8 border-t border-slate-800 flex flex-col md:flex-row justify-between items-center text-xs text-slate-500"><p className="mb-4 md:mb-0">© 2026 HamyAI. Alle Rechte vorbehalten.</p><div className="flex space-x-6"><a href="#" onClick={(e) => handleLinkClick(e, 'imprint')} className="hover:text-white transition-colors">Impressum</a><a href="#" onClick={(e) => handleLinkClick(e, 'privacy')} className="hover:text-white transition-colors">Datenschutz</a><a href="#" onClick={(e) => handleLinkClick(e, 'home')} className="hover:text-white transition-colors">AGB</a></div></div>
+              <div className="pt-8 border-t border-slate-800 flex flex-col md:flex-row justify-between items-center text-xs text-slate-500"><p className="mb-4 md:mb-0">© 2026 HamyAI. Alle Rechte vorbehalten.</p></div>
             </div>
           </footer>
         );
@@ -609,7 +769,7 @@
             
             <div className="grid md:grid-cols-2 gap-16 items-center mb-24">
               <div className="animate-in fade-in slide-in-from-left-4 duration-700"><h2 className="text-3xl font-display font-bold text-slate-900 mb-6">Unsere Mission</h2><p className="text-lg text-slate-600 leading-relaxed mb-4">Bei hamyAI glauben wir, dass Technologie den Menschen nicht ersetzen, sondern ihn befreien sollte. Unsere Mission ist es, Unternehmen dabei zu unterstützen, repetitive Aufgaben durch intelligente KI-Chatbots zu automatisieren.</p><p className="text-lg text-slate-600 leading-relaxed">Dadurch gewinnen Ihre Mitarbeiter Zeit für das, was wirklich zählt: komplexe Problemlösungen und persönliche Kundenbeziehungen.</p></div>
-              <div className="bg-slate-100 rounded-[2rem] aspect-video overflow-hidden shadow-inner"><img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=80" alt="Team working" className="w-full h-full object-cover" /></div>
+              <div className="bg-slate-100 rounded-[2rem] aspect-video overflow-hidden shadow-inner"><img src="/img/medical.jpg" className="absolute inset-0 w-full h-full object-cover opacity-80 mix-blend-overlay" alt="Medical Team" />
             </div>
 
             {/* CEO Section */}
@@ -764,6 +924,89 @@
               <p>Die Datenübertragung in die USA wird auf die Standardvertragsklauseln der EU-Kommission gestützt. Details finden Sie hier: <a href="https://www.facebook.com/legal/EU_data_transfer_addendum" target="_blank" rel="noopener noreferrer" className="text-brand-600 hover:underline">https://www.facebook.com/legal/EU_data_transfer_addendum</a>, <a href="https://privacycenter.instagram.com/policy/" target="_blank" rel="noopener noreferrer" className="text-brand-600 hover:underline">https://privacycenter.instagram.com/policy/</a> und <a href="https://de-de.facebook.com/help/566994660333381" target="_blank" rel="noopener noreferrer" className="text-brand-600 hover:underline">https://de-de.facebook.com/help/566994660333381</a>.</p>
               <p>Weitere Informationen hierzu finden Sie in der Datenschutzerklärung von Instagram: <a href="https://privacycenter.instagram.com/policy/" target="_blank" rel="noopener noreferrer" className="text-brand-600 hover:underline">https://privacycenter.instagram.com/policy/</a>.</p>
               <p>Das Unternehmen verfügt über eine Zertifizierung nach dem „EU-US Data Privacy Framework“ (DPF). Der DPF ist ein Übereinkommen zwischen der Europäischen Union und den USA, der die Einhaltung europäischer Datenschutzstandards bei Datenverarbeitungen in den USA gewährleisten soll. Jedes nach dem DPF zertifizierte Unternehmen verpflichtet sich, diese Datenschutzstandards einzuhalten. Weitere Informationen hierzu erhalten Sie vom Anbieter unter folgendem Link: <a href="https://www.dataprivacyframework.gov/participant/4452" target="_blank" rel="noopener noreferrer" className="text-brand-600 hover:underline">https://www.dataprivacyframework.gov/participant/4452</a>.</p>
+              
+              <h2 className="text-2xl font-bold text-slate-900 mt-8 mb-4">6. Kommunikation via Messenger & Superchat</h2>
+
+                <h3 className="text-xl font-bold text-slate-900 mb-3">WhatsApp</h3>
+                <p>Wenn Sie WhatsApp nutzen, um mit uns in Kontakt zu treten, verarbeiten wir Ihre Telefonnummer, Ihren Namen und weitere von Ihnen mitgeteilte Daten, um Ihre Anfrage zu beantworten oder, wenn Sie ausdrücklich eingewilligt haben, um Ihnen werbliche Nachrichten zuzusenden.</p>
+                <p>Für den Versand und Empfang von Nachrichten über unsere verschiedenen Kommunikationskanäle, einschließlich WhatsApp, nutzen wir den Dienst Superchat der SuperX GmbH, Oranienburger Str. 91, 10178 Berlin („Superchat“). Die Daten werden in unserem Auftrag auf Servern von Superchat in Deutschland gespeichert.</p>
+                <p>Betreiber des WhatsApp-Dienstes ist die WhatsApp Ireland Limited, 4 Grand Canal Square, Grand Canal Harbour, Dublin 2, Irland („WhatsApp"), eine Konzerngesellschaft der Meta Platforms, Inc. (vormals Facebook). WhatsApp verarbeitet die Daten entsprechend seiner Datenschutzhinweise, die Sie hier abrufen können. Die Kommunikationsinhalte sind Ende-zu-Ende verschlüsselt. Gegebenenfalls erhebt WhatsApp auch weitere sogenannte „Metadaten“, die Informationen über die Identität von Absender und Empfänger enthalten können, sowie die Telefonnummer, Geräteinformationen und Informationen zur Nutzung von WhatsApp (z.B. Dauer und Häufigkeit). WhatsApp nutzt diese Daten auch für eigene Zwecke, wie z.B. die Verbesserung des WhatsApp-Dienstes. Weitere Informationen ergeben sich aus den WhatsApp-Datenschutzhinweisen. Wir haben keine Kenntnis von den Einzelheiten dieser Datenverarbeitung und auch keinen Einfluss darauf. Eine Weitergabe an weitere Empfänger innerhalb der Meta-Unternehmensgruppe in Ländern außerhalb der EU, die kein angemessenes Datenschutzniveau bieten (insbesondere in den USA), können wir nicht ausschließen.</p>
+                <p>Rechtsgrundlage für die Datenverarbeitung durch uns ist</p>
+                <ul className="list-disc pl-5 space-y-2">
+                <li>Art. 6 Abs. 1 lit. b) DS-GVO, wenn die Kommunikation der Anbahnung oder Abwicklung eines Vertragsverhältnisses dient;</li>
+                <li>Ihre Einwilligung gemäß Art. 6 Abs. 1 lit. a) DS-GVO, wenn Sie sich für den Newsletter-Versand per WhatsApp angemeldet haben</li>
+                <li>sowie in allen anderen Fällen unser berechtigtes Interesse gemäß Art. 6 Abs. 1 lit. f) DS-GVO an der Bearbeitung Ihrer Anfrage.</li>
+                </ul>
+                <p>Soweit die Verarbeitung aufgrund Ihrer Einwilligung erfolgt, werden die Daten gelöscht, sobald Sie Ihre Einwilligung widerrufen haben. Sie können Ihre Einwilligung jederzeit widerrufen, indem Sie im Chat eine Nachricht mit dem Inhalt “Stop” oder eine E-Mail an chatbothamy@gmail.com senden.</p>
+                <p>Ansonsten löschen wir Ihre Daten, sobald der Zweck der Verarbeitung weggefallen ist (z.B. die Anfrage abschließend beantwortet wurde). Falls der Löschung gesetzliche Aufbewahrungsfristen entgegenstehen, werden die Daten bis zum Ablauf der Aufbewahrungsfrist für die weitere Verwendung gesperrt.</p>
+
+                <h3 className="text-xl font-bold text-slate-900 mb-3">Telegram</h3>
+                <p>Wenn Sie Telegram nutzen, um mit uns in Kontakt zu treten, verarbeiten wir Ihre Telefonnummer, Ihren Telegram-Nutzernamen, gegebenenfalls Ihren Namen und weitere von Ihnen mitgeteilte Daten, um Ihre Anfrage zu beantworten oder, wenn Sie ausdrücklich eingewilligt haben, um Ihnen werbliche Nachrichten zuzusenden.</p>
+                <p>Für den Versand und Empfang von Nachrichten über unsere verschiedenen Kommunikationskanäle, einschließlich Telegram, nutzen wir den Dienst Superchat der SuperX GmbH, Oranienburger Str. 91, 10178 Berlin („Superchat“). Die Daten werden in unserem Auftrag auf Servern von Superchat in Deutschland gespeichert</p>
+                <p>Betreiber des Telegram-Dienstes ist die Telegram Messenger LLP, 71-75 Shelton Street, Covent Garden, London, United Kingdom („Telegram"). Telegram verarbeitet die Daten entsprechend seiner Datenschutzhinweise, die Sie hier abrufen können. Die Kommunikation bei Telegram ist grundsätzlich nicht verschlüsselt. Wir weisen darauf hin, dass Telegram auf das Adressbuch des genutzten Endgerätes und die darin gespeicherten Kontaktdaten zugreift. Gegebenenfalls erhebt Telegram auch weitere sogenannte „Metadaten“, die Informationen über die Identität von Absender und Empfänger enthalten können, sowie die Telefonnummer, Geräteinformationen und Informationen zur Nutzung von Telegram (z.B. Dauer und Häufigkeit). Telegram nutzt diese Daten auch für eigene Zwecke, wie z.B. die Verbesserung des Telegram-Dienstes. Einzelheiten ergeben sich aus den Telegram-Datenschutzhinweisen. Die Daten werden von Telegram möglicherweise an weitere Empfänger innerhalb der Telegram-Unternehmensgruppe weitergegeben (insbesondere die Telegram Group Inc. und die Telegram FZ-LLC) und möglicherweise auch auf Servern in Ländern außerhalb der EU verarbeitet, die kein angemessenes Datenschutzniveau bieten. Wir haben keine Kenntnis von den Einzelheiten dieser Datenverarbeitung und auch keinen Einfluss darauf.</p>
+                <p>Rechtsgrundlage für die Datenverarbeitung durch uns ist</p>
+                <ul className="list-disc pl-5 space-y-2">
+                <li>Art. 6 Abs. 1 lit. b) DS-GVO, wenn die Kommunikation der Anbahnung oder Abwicklung eines Vertragsverhältnisses dient;</li>
+                <li>Ihre Einwilligung gemäß Art. 6 Abs. 1 lit. a) DS-GVO, wenn Sie sich für den Newsletter-Versand per Telegram angemeldet haben</li>
+                <li>sowie in allen anderen Fällen unser berechtigtes Interesse gemäß Art. 6 Abs. 1 lit. f) DS-GVO an der Bearbeitung Ihrer Anfrage.</li>
+                </ul>
+                <p>Soweit die Verarbeitung aufgrund Ihrer Einwilligung erfolgt, werden die Daten gelöscht, sobald Sie Ihre Einwilligung widerrufen haben. Sie können Ihre Einwilligung jederzeit widerrufen, indem Sie im Chat eine Nachricht mit dem Inhalt “Stop” oder eine E-Mail an chatbothamy@gmail.com senden.</p>
+                <p>Ansonsten löschen wir Ihre Daten, sobald der Zweck der Verarbeitung weggefallen ist (z.B. die Anfrage abschließend beantwortet wurde). Falls der Löschung gesetzliche Aufbewahrungsfristen entgegenstehen, werden die Daten bis zum Ablauf der Aufbewahrungsfrist für die weitere Verwendung gesperrt.</p>
+
+                <h3 className="text-xl font-bold text-slate-900 mb-3">Facebook Messenger</h3>
+                <p>Wenn Sie den Facebook Messenger nutzen, um mit uns in Kontakt zu treten, verarbeiten wir personenbezogene Daten, die für die Kontaktaufnahme und die Kommunikation erforderlich sind. Facebook gewährt uns Zugriff auf Ihre „öffentlichen Informationen“, die z.B. Ihren Namen, Ihr Geschlecht, Ihre Facebook-ID und Ihre Profil- und Titelbilder beinhalten. Wir nutzen diese Informationen, um Ihre Anfrage zu beantworten oder, wenn Sie ausdrücklich eingewilligt haben, um Ihnen werbliche Nachrichten zuzusenden.</p>
+                <p>Für den Versand und Empfang von Nachrichten über unsere verschiedenen Kommunikationskanäle, einschließlich Facebook Messenger, nutzen wir den Dienst Superchat der SuperX GmbH, Oranienburger Str. 91, 10178 Berlin („Superchat“). Die Daten werden in unserem Auftrag auf Servern von Superchat in Deutschland gespeichert.</p>
+                <p>Facebook ist ein Dienst der Facebook Ireland Ltd., 4 Grand Canal Square, Dublin 2, Irland („Facebook“), ein Unternehmen der Meta-Gruppe. Facebook verarbeitet die Daten entsprechend seiner Datenschutzrichtlinie, die Sie hier abrufen können. Facebook bietet die Möglichkeit einer Ende-zu-Ende-Verschlüsselung der Kommunikation an, die in den Einstellungen des Messengers aktiviert werden kann. Wir weisen darauf hin, dass Facebook gegebenenfalls so genannte „Metadaten“, die Informationen über die Identität von Absender und Empfänger enthalten können, sowie den Standort, Geräteinformationen und Informationen zur Nutzung des Facebook-Messengers (z.B. Dauer und Häufigkeit) erhebt. Facebook nutzt diese Daten auch für eigene Zwecke, wie z.B. die Verbesserung des Facebook-Messengers. Weitere Informationen ergeben sich aus den Facebook-Datenschutzhinweisen. Wir haben keine Kenntnis von den Einzelheiten dieser Datenverarbeitung und auch keinen Einfluss darauf. Eine Weitergabe an weitere Empfänger innerhalb der Meta-Unternehmensgruppe in Ländern außerhalb der EU, die kein angemessenes Datenschutzniveau bieten (insbesondere in den USA), können wir nicht ausschließen.</p>
+                <p>Rechtsgrundlage für die Datenverarbeitung durch uns ist</p>
+                <ul className="list-disc pl-5 space-y-2">
+                <li>Art. 6 Abs. 1 lit. b) DS-GVO, wenn die Kommunikation der Anbahnung oder Abwicklung eines Vertragsverhältnisses dient;</li>
+                <li>Ihre Einwilligung gemäß Art. 6 Abs. 1 lit. a) DS-GVO, wenn Sie sich für den Newsletter-Versand per Facebook-Messenger angemeldet haben</li>
+                <li>sowie in allen anderen Fällen unser berechtigtes Interesse gemäß Art. 6 Abs. 1 lit. f) DS-GVO an der Bearbeitung Ihrer Anfrage.</li>
+                </ul>
+                <p>Soweit die Verarbeitung aufgrund Ihrer Einwilligung erfolgt, werden die Daten gelöscht, sobald Sie Ihre Einwilligung widerrufen haben. Sie können Ihre Einwilligung jederzeit widerrufen, indem Sie im Chat eine Nachricht mit dem Inhalt “Stop” oder eine E-Mail an chatbothamy@gmail.com senden.</p>
+                <p>Ansonsten löschen wir Ihre Daten, sobald der Zweck der Verarbeitung weggefallen ist (z.B. die Anfrage abschließend beantwortet wurde). Falls der Löschung gesetzliche Aufbewahrungsfristen entgegenstehen, werden die Daten bis zum Ablauf der Aufbewahrungsfrist für die weitere Verwendung gesperrt.</p>
+
+                <h3 className="text-xl font-bold text-slate-900 mb-3">Instagram Direct Messenger</h3>
+                <p>Wenn Sie den Instagram Direct Messenger nutzen, um mit uns in Kontakt zu treten, verarbeiten wir personenbezogene Daten, die für die Kontaktaufnahme und die Kommunikation erforderlich sind. Instagram gewährt uns Zugriff auf den von Ihnen gewählten Nutzernamen. Wir nutzen diese Informationen, um Ihre Anfrage zu beantworten oder, wenn Sie ausdrücklich eingewilligt haben, um Ihnen werbliche Nachrichten zuzusenden.</p>
+                <p>Für den Versand und Empfang von Nachrichten über unsere verschiedenen Kommunikationskanäle, einschließlich Instagram Direct Messenger, nutzen wir den Dienst Superchat der SuperX GmbH, Oranienburger Str. 91, 10178 Berlin („Superchat“). Die Daten werden in unserem Auftrag auf Servern von Superchat in Deutschland gespeichert.</p>
+                <p>Instagram ist ein Dienst der Facebook Ireland Ltd., 4 Grand Canal Square, Dublin 2, Irland, ein Unternehmen der Meta-Gruppe. Instagram verarbeitet die Daten entsprechend seiner Datenschutzrichtlinie, die Sie hier abrufen können. Wir weisen darauf hin, dass Instagram gemäß der Informationen in der Instagram-Datenschutzrichtlinie die von seinen Nutzern bereitgestellte Inhalte, einschließlich der Kommunikationsinhalte, sowie weitere Informationen wie beispielsweise den Standort, Geräteinformationen und Informationen zur Nutzung von Instagram (z.B. Dauer und Häufigkeit) erhebt. Instagram, nutzt diese Daten auch für eigene Zwecke, wie z.B. die Verbesserung des Instagram-Dienstes. Weitere Informationenergeben sich aus den Instagram-Datenschutzhinweisen. Wir haben keine Kenntnis von den Einzelheiten dieser Datenverarbeitung und auch keinen Einfluss darauf. Eine Weitergabe an weitere Empfänger innerhalb der Meta-Unternehmensgruppe (z.B. an Facebook) sowie externe Dritte (z.B. Werbepartner und Analysedienste)in Ländern außerhalb der EU, die kein angemessenes Datenschutzniveau bieten (insbesondere in den USA), können wir nicht ausschließen. Rechtsgrundlage für die Datenverarbeitung durch uns ist</p>
+                <ul className="list-disc pl-5 space-y-2">
+                <li>Art. 6 Abs. 1 lit. b) DS-GVO, wenn die Kommunikation der Anbahnung oder Abwicklung eines Vertragsverhältnisses dient;</li>
+                <li>Ihre Einwilligung gemäß Art. 6 Abs. 1 lit. a) DS-GVO, wenn Sie sich für den Newsletter-Versand per Instagram-Messenger angemeldet haben</li>
+                <li>sowie in allen anderen Fällen unser berechtigtes Interesse gemäß Art. 6 Abs. 1 lit. f) DS-GVO an der Bearbeitung Ihrer Anfrage.</li>
+                </ul>
+                <p>Soweit die Verarbeitung aufgrund Ihrer Einwilligung erfolgt, werden die Daten gelöscht, sobald Sie Ihre Einwilligung widerrufen haben. Sie können Ihre Einwilligung jederzeit widerrufen, indem Sie im Chat eine Nachricht mit dem Inhalt “Stop” oder eine E-Mail an chatbothamy@gmail.com senden.</p>
+                <p>Ansonsten löschen wir Ihre Daten, sobald der Zweck der Verarbeitung weggefallen ist (z.B. die Anfrage abschließend beantwortet wurde). Falls der Löschung gesetzliche Aufbewahrungsfristen entgegenstehen, werden die Daten bis zum Ablauf der Aufbewahrungsfrist für die weitere Verwendung gesperrt.</p>
+
+                <h3 className="text-xl font-bold text-slate-900 mb-3">Google Business Messages</h3>
+                <p>Wenn Sie über unser Unternehmensprofil bei Google oder einen anderen Google-Dienst (z.B. Maps) mit uns in Kontakt treten, verarbeiten wir personenbezogene Daten, die für die Kontaktaufnahme und die Kommunikation erforderlich sind. Google gewährt uns Zugriff auf den von Ihnen gewählten Nutzernamen. Wir nutzen diese Informationen, um Ihre Anfrage zu beantworten oder, wenn Sie ausdrücklich eingewilligt haben, um Ihnen werbliche Nachrichten zuzusenden.</p>
+                <p>Für den Versand und Empfang von Nachrichten über unsere verschiedenen Kommunikationskanäle, einschließlich Google Business Messages, nutzen wir den Dienst Superchat der SuperX GmbH, Oranienburger Str. 91, 10178 Berlin („Superchat“). Die Daten werden in unserem Auftrag auf Servern von Superchat in Deutschland gespeichert.</p>
+                <p>Google Business Messages ist ein Dienst der Google Ireland Ltd., Gordon House, Barrow Street, Dublin 4, Irland („Google“), ein Unternehmen des Google-Konzerns. Google verarbeitet die Daten entsprechend seiner Datenschutzrichtlinie, die Sie hier abrufen können. Wir haben keine Kenntnis von den Einzelheiten dieser Datenverarbeitung und auch keinen Einfluss darauf. Eine Weitergabe an weitere Empfänger innerhalb der Google-Unternehmensgruppe in Ländern außerhalb der EU, die kein angemessenes Datenschutzniveau bieten (insbesondere in den USA), können wir nicht ausschließen.</p>
+                <p>Rechtsgrundlage für die Datenverarbeitung durch uns ist</p>
+                <ul className="list-disc pl-5 space-y-2">
+                <li>Art. 6 Abs. 1 lit. b) DS-GVO, wenn die Kommunikation der Anbahnung oder Abwicklung eines Vertragsverhältnisses dient;</li>
+                <li>Ihre Einwilligung gemäß Art. 6 Abs. 1 lit. a) DS-GVO, wenn Sie sich für den Newsletter-Versand per Instagram-Messenger angemeldet haben</li>
+                <li>sowie in allen anderen Fällen unser berechtigtes Interesse gemäß Art. 6 Abs. 1 lit. f) DS-GVO an der Bearbeitung Ihrer Anfrage.</li>
+                </ul>
+                <p>Soweit die Verarbeitung aufgrund Ihrer Einwilligung erfolgt, werden die Daten gelöscht, sobald Sie Ihre Einwilligung widerrufen haben. Sie können Ihre Einwilligung jederzeit widerrufen, indem Sie eine E-Mail an chatbothamy@gmail.com senden.</p>
+                <p>Ansonsten löschen wir Ihre Daten, sobald der Zweck der Verarbeitung weggefallen ist (z.B. die Anfrage abschließend beantwortet wurde). Falls der Löschung gesetzliche Aufbewahrungsfristen entgegenstehen, werden die Daten bis zum Ablauf der Aufbewahrungsfrist für die weitere Verwendung gesperrt.</p>
+
+                <h3 className="text-xl font-bold text-slate-900 mb-3">SMS</h3>
+                <p>Wenn Sie per SMS mit uns in Kontakt zu treten, verarbeiten wir personenbezogene Daten, die für die Kontaktaufnahme und die Kommunikation erforderlich sind. Dazu gehören Ihre Rufnummer, Ihr Name und gegebenenfalls weitere Informationen, die Sie uns zur Verfügung stellen. Wir nutzen diese Informationen, um Ihre Anfrage zu beantworten oder, wenn Sie ausdrücklich eingewilligt haben, um Ihnen werbliche Nachrichten zuzusenden.</p>
+                <p>Für den Versand und Empfang von Nachrichten über unsere verschiedenen Kommunikationskanäle, einschließlich SMS-Nachrichten, nutzen wir den Dienst Superchat der SuperX GmbH, Oranienburger Str. 91, 10178 Berlin („Superchat“). Die Daten werden in unserem Auftrag auf Servern von Superchat in Deutschland gespeichert.</p>
+                <p>Rechtsgrundlage für die Datenverarbeitung durch uns ist</p>
+                <ul className="list-disc pl-5 space-y-2">
+                <li>Art. 6 Abs. 1 lit. b) DS-GVO, wenn die Kommunikation der Anbahnung oder Abwicklung eines Vertragsverhältnisses dient;</li>
+                <li>Ihre Einwilligung gemäß Art. 6 Abs. 1 lit. a) DS-GVO, wenn Sie sich für den Newsletter-Versand per Instagram-Messenger angemeldet haben</li>
+                <li>sowie in allen anderen Fällen unser berechtigtes Interesse gemäß Art. 6 Abs. 1 lit. f) DS-GVO an der Bearbeitung Ihrer Anfrage.</li>
+                </ul>
+                <p>Soweit die Verarbeitung aufgrund Ihrer Einwilligung erfolgt, werden die Daten gelöscht, sobald Sie Ihre Einwilligung widerrufen haben. Sie können Ihre Einwilligung jederzeit widerrufen, indem Sie eine SMS mit dem Inhalt “Stop” oder eine E-Mail an chatbothamy@gmail.com senden.</p>
+                <p>Ansonsten löschen wir Ihre Daten, sobald der Zweck der Verarbeitung weggefallen ist (z.B. die Anfrage abschließend beantwortet wurde). Falls der Löschung gesetzliche Aufbewahrungsfristen entgegenstehen, werden die Daten bis zum Ablauf der Aufbewahrungsfrist für die weitere Verwendung gesperrt.</p>
+
+                <h3 className="text-xl font-bold text-slate-900 mb-3">Anfragen per E-Mail</h3>
+                <p>Bei einer Kontaktaufnahme per E-Mail werden die mit der E-Mail übermittelten personenbezogenen Daten (Ihre E-Mailadresse, die Kommunikationsinhalte und ggf. Ihr Name und sonstige, von Ihnen angegebene Daten) gespeichert. Diese Daten werden ausschließlich für die Beantwortung der Anfrage verarbeitet.</p>
+                <p>Für den Versand und Empfang von Nachrichten über unsere verschiedenen Kommunikationskanäle, einschließlich E-Mailanfragen, nutzen wir den Dienst Superchat der SuperX GmbH, Oranienburger Str. 91, 10178 Berlin („Superchat“). Die Daten werden in unserem Auftrag auf Servern von Superchat in Deutschland gespeichert</p>
+                <p>Rechtsgrundlage für diese Verarbeitung ist Art. 6 (1) lit. b) DSGVO, wenn die Anfrage auf einen Vertragsschluss gerichtet ist, in anderen Fällen unser berechtigtes Interesse gemäß Art. 6 Abs. 1 lit. f) DS-GVO an der Bearbeitung Ihrer Anfrage. Die Daten werden gelöscht, wenn der Zweck der Verarbeitung wegfällt, z.B. die Anfrage abschließend beantwortet ist.</p>
               
               <p className="mt-8 pt-8 border-t border-slate-200">Quelle: <a href="https://www.e-recht24.de" className="text-brand-600 hover:text-brand-700 underline">https://www.e-recht24.de</a></p>
             </div>
@@ -921,7 +1164,7 @@
                          <div className="pt-4"><Button variant="primary" onClick={openModal}>Jetzt Demo vereinbaren</Button></div>
                       </div>
                       <div className="bg-slate-800 h-full min-h-[300px] relative">
-                         <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=800&q=80" className="absolute inset-0 w-full h-full object-cover opacity-60" alt="Restaurant Interior" />
+                         <img src="/img/restaurant.jpg" className="absolute inset-0 w-full h-full object-cover opacity-60" alt="Restaurant Interior" />
                       </div>
                    </div>
                 </div>
@@ -977,7 +1220,7 @@
                          <div className="pt-4"><Button variant="white" onClick={openModal}>Jetzt beraten lassen</Button></div>
                       </div>
                       <div className="bg-teal-800 h-full min-h-[300px] relative">
-                         <img src="https://images.unsplash.com/photo-1587854692152-cbe660dbde88?auto=format&fit=crop&w=800&q=80" className="absolute inset-0 w-full h-full object-cover opacity-80 mix-blend-overlay" alt="Pharmacy Interior" />
+                         <img src="/img/pharmacy.jpg" className="absolute inset-0 w-full h-full object-cover opacity-80 mix-blend-overlay" alt="Pharmacy Interior" />
                       </div>
                    </div>
                 </div>
@@ -1033,7 +1276,7 @@
                          <div className="pt-4"><Button variant="primary" onClick={openModal}>Jetzt Demo vereinbaren</Button></div>
                       </div>
                       <div className="bg-slate-800 h-full min-h-[300px] relative">
-                         <img src="https://images.unsplash.com/photo-1550355291-bbee04a92027?auto=format&fit=crop&w=800&q=80" className="absolute inset-0 w-full h-full object-cover opacity-60" alt="Car Showroom" />
+                         <img src="/img/car.jpg" className="absolute inset-0 w-full h-full object-cover opacity-60" alt="Car Showroom" />
                       </div>
                    </div>
                 </div>
@@ -1045,7 +1288,53 @@
       // --- MAIN APP ---
       const AppContent = () => {
         const { isModalOpen, closeModal } = useModal();
-        const [currentPage, setCurrentPage] = useState('home');
+        
+        // --- CHANGED: Initialize state from URL param or default to 'home' ---
+        const [currentPage, setCurrentPage] = useState(() => {
+            if (typeof window !== 'undefined') {
+                const params = new URLSearchParams(window.location.search);
+                const pageParam = params.get('page');
+                const validPages = ['home', 'medical', 'restaurant', 'pharmacy', 'car-dealership', 'about', 'privacy', 'imprint', 'agb'];
+                if (pageParam && validPages.includes(pageParam)) {
+                    return pageParam;
+                }
+            }
+            return 'home';
+        });
+
+        // --- NEW: Sync state to URL without reloading ---
+        useEffect(() => {
+            try {
+                const params = new URLSearchParams(window.location.search);
+                const urlPage = params.get('page') || 'home';
+                if (urlPage !== currentPage) {
+                    const newUrl = new URL(window.location);
+                    newUrl.searchParams.set('page', currentPage);
+                    window.history.pushState({}, '', newUrl);
+                }
+            } catch (e) {
+                // Ignore history errors in sandboxed environments
+                console.log("Navigation update skipped due to environment restrictions");
+            }
+        }, [currentPage]);
+
+        // --- NEW: Handle browser Back/Forward buttons ---
+        useEffect(() => {
+            const handlePopState = () => {
+                const params = new URLSearchParams(window.location.search);
+                const page = params.get('page');
+                const validPages = ['home', 'medical', 'restaurant', 'pharmacy', 'car-dealership', 'about', 'privacy', 'imprint', 'agb'];
+                setCurrentPage(validPages.includes(page) ? page : 'home');
+            };
+            window.addEventListener('popstate', handlePopState);
+            return () => window.removeEventListener('popstate', handlePopState);
+        }, []);
+        
+        // --- NEW: Scroll to top effect on page change ---
+        useEffect(() => {
+            window.scrollTo({ top: 0, behavior: 'auto' });
+        }, [currentPage]);
+
         const [isGlobalAnimating, setIsGlobalAnimating] = useState(false);
         const [confetti, setConfetti] = useState([]);
 
@@ -1059,7 +1348,8 @@
                 'car-dealership': 'HamyAI - KI Chatbots für Autohäuser',
                 'about': 'Über uns - HamyAI',
                 'privacy': 'Datenschutzerklärung - HamyAI',
-                'imprint': 'Impressum - HamyAI'
+                'imprint': 'Impressum - HamyAI',
+                'agb': 'AGB - HamyAI'
             };
             
             const title = pageTitles[currentPage] || 'HamyAI - KI Chatbots für Unternehmen';
@@ -1094,9 +1384,8 @@
         };
         const navigateTo = (page, anchor) => {
             if (currentPage !== page) {
-            setCurrentPage(page);
-            if (anchor) setTimeout(() => performPreciseScroll(anchor), 150);
-            else window.scrollTo({ top: 0, behavior: 'smooth' });
+              setCurrentPage(page);
+              if (anchor) setTimeout(() => performPreciseScroll(anchor), 150);
             } else if (anchor) performPreciseScroll(anchor);
             else window.scrollTo({ top: 0, behavior: 'smooth' });
         };
@@ -1133,6 +1422,7 @@
                   {currentPage === 'car-dealership' && <CarDealershipPage />}
                   {currentPage === 'privacy' && <PrivacyPolicy />}
                   {currentPage === 'imprint' && <Imprint />}
+                  {currentPage === 'agb' && <TermsOfService />}
                 </main>
                 <Footer onNavigate={navigateTo} />
             </div>
@@ -1149,6 +1439,33 @@
 
       const root = ReactDOM.createRoot(document.getElementById('root'));
       root.render(<App />);
+    </script>
+    
+    <script>
+      (function() {
+        function loadSuperchat() {
+          if (document.getElementById('superchat-script')) return;
+          var script = document.createElement('script');
+          script.id = 'superchat-script';
+          script.src = 'https://widget.superchat.de/snippet.js?applicationKey=WCeQ4yOnq8brR6dpr0RogLzPN7';
+          script.referrerPolicy = 'no-referrer-when-downgrade';
+          document.body.appendChild(script);
+        }
+
+        // Prüfung für Cookiebot
+        window.addEventListener('CookiebotOnAccept', function (e) {
+            if (Cookiebot.consent.marketing) {
+                loadSuperchat();
+            }
+        });
+        
+        // Falls der Nutzer schon zugestimmt hat (beim Neuladen)
+        window.addEventListener('load', function() {
+            if (typeof Cookiebot !== 'undefined' && Cookiebot.consent && Cookiebot.consent.marketing) {
+                loadSuperchat();
+            }
+        });
+      })();
     </script>
 </body>
 </html>
